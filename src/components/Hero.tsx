@@ -61,7 +61,7 @@ export function Hero({ language }: HeroProps) {
   return (
     <section 
       id="hero" 
-      className="min-h-screen flex items-center pt-20 pb-28 px-6 bg-gradient-to-br from-white via-blue-50/30 to-teal-50/30 dark:from-gray-900 dark:via-gray-800/90 dark:to-gray-900 relative overflow-hidden"
+      className="min-h-screen flex items-center pt-20 pb-28 mt-5 px-6 bg-gradient-to-br from-white via-blue-50/30 to-teal-50/30 dark:from-gray-900 dark:via-gray-800/90 dark:to-gray-900 relative overflow-hidden"
     >
       {/* Background Pattern - Light Mode */}
       <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(94,234,212,0.05)_25%,rgba(94,234,212,0.05)_50%,transparent_50%,transparent_75%,rgba(94,234,212,0.05)_75%)] bg-[length:20px_20px] dark:opacity-0"></div>

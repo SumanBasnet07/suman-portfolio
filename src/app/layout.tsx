@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     "Web Solutions",
     "Portfolio",
     "Nepal Developer",
-    "Kathmandu Developer"
+    "Japan Developer"
   ],
   authors: [{ name: "Suman Basnet" }],
   creator: "Suman Basnet",
@@ -167,7 +167,7 @@ export default function RootLayout({
     '@type': 'WebSite',
     name: 'Suman Basnet Portfolio',
     description: 'Portfolio of Suman Basnet - Full Stack Developer specializing in MERN stack and Next.js applications',
-    url: 'https://sumanbasnet.com.np',
+    url: 'https://suman-basnet.com.np',
     author: {
       '@type': 'Person',
       name: 'Suman Basnet'
