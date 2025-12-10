@@ -5,7 +5,7 @@ import { Mail, MapPin, Phone, Github, Linkedin, Instagram, Send, MessageCircle, 
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
-import { Language } from '@/app/page';
+import { Language } from '@/types/language';
 
 interface ContactProps {
   language: Language;
@@ -43,7 +43,7 @@ export function Contact({ language }: ContactProps) {
       connectWithMe: 'Connect with me',
       quickResponse: 'Quick Response Guaranteed'
     },
-    jp: {
+    ja: {
       title: 'コンタクト',
       subtitle: 'あなたのアイデアを実現する準備はできていますか？あなたのプロジェクトについて話し合い、一緒に素晴らしいものを作りましょう。',
       namePlaceholder: 'お名前',

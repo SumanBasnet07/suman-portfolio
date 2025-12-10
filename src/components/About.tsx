@@ -2,7 +2,7 @@
 
 import { Download, Code2, Rocket, Heart, MapPin, Calendar, Award, Users, BookOpen, Coffee, Sparkles } from 'lucide-react';
 import { Button } from './ui/button';
-import { Language } from '@/app/page';
+import { Language } from '@/types/language';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 
 interface AboutProps {
@@ -33,7 +33,7 @@ When I'm not coding, you'll find me contributing to open-source projects, explor
       professional: 'Professional',
       developer: 'Developer'
     },
-    jp: {
+    ja: {
       title: '私について',
       subtitle: 'コードの背後にあるストーリー',
       description: `私は3年以上の経験を持つ情熱的なフルスタック開発者で、変化をもたらすデジタルソリューションを創り上げています。Web開発への旅は好奇心から始まり、卓越したユーザー体験を創造することに専念するキャリアへと進化しました。

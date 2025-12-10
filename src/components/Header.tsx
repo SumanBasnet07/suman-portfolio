@@ -1,29 +1,38 @@
-'use client';
+"use client";
 
-import { Menu, X } from 'lucide-react';
-import { Button } from './ui/button';
-import { Language } from '@/app/page';
-import { useState } from 'react';
-import ThemeToggle from './ThemeToggle';
+import { Menu, X } from "lucide-react";
+import { Button } from "./ui/button";
+import { Language } from "@/types/language"; // Updated import
+import { useState } from "react";
+import ThemeToggle from "./ThemeToggle";
+import { useRouter, usePathname } from "next/navigation"; // Add these imports
 
 interface HeaderProps {
   language: Language;
-  setLanguage: (lang: Language) => void;
 }
 
-export function Header({ language, setLanguage }: HeaderProps) {
+export function Header({ language }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const router = useRouter();
+  const pathname = usePathname();
 
   const navItems = {
-    en: ['Home', 'Projects', 'Skills', 'About', 'Contact'],
-    jp: ['ホーム', 'プロジェクト', 'スキル', '私について', 'お問い合わせ']
+    en: ["Home", "Projects", "Skills", "About", "Contact"],
+    ja: ["ホーム", "プロジェクト", "スキル", "私について", "お問い合わせ"],
   };
 
   const scrollToSection = (index: number) => {
-    const sections = ['hero', 'projects', 'skills', 'about', 'contact'];
+    const sections = ["hero", "projects", "skills", "about", "contact"];
     const element = document.getElementById(sections[index]);
-    element?.scrollIntoView({ behavior: 'smooth' });
+    element?.scrollIntoView({ behavior: "smooth" });
     setMobileMenuOpen(false);
+  };
+
+  // Function to switch language using router
+  const switchLanguage = (newLang: Language) => {
+    // Replace the language prefix in the current pathname
+    const newPathname = pathname.replace(`/${language}`, `/${newLang}`);
+    router.push(newPathname);
   };
 
   return (
@@ -33,13 +42,14 @@ export function Header({ language, setLanguage }: HeaderProps) {
           {/* Logo */}
           <div className="flex items-center">
             <h1 className="text-xl font-bold text-gray-900 dark:text-white transition-colors">
-              {language === 'en' ? 'My Portfolio' : 'マイポートフォリオ'}
+              {language === "en" ? "My Portfolio" : "マイポートフォリオ"}
             </h1>
           </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
-            {navItems[language].map((item, index) => (
+            {/* FIX: Add optional chaining to prevent map error */}
+            {navItems[language]?.map((item, index) => (
               <button
                 key={item}
                 onClick={() => scrollToSection(index)}
@@ -48,31 +58,32 @@ export function Header({ language, setLanguage }: HeaderProps) {
                 {item}
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-teal-600 dark:bg-teal-400 group-hover:w-full transition-all duration-300"></span>
               </button>
-            ))}
+            )) || []}{" "}
+            {/* Add fallback empty array */}
           </nav>
 
           {/* Theme Toggle and Language */}
           <div className="flex items-center gap-4">
             <ThemeToggle />
-            
+
             {/* Language Toggle */}
             <div className="flex items-center gap-2 bg-gray-100 dark:bg-gray-800 rounded-full p-1 border border-gray-200 dark:border-gray-700">
               <button
-                onClick={() => setLanguage('en')}
+                onClick={() => switchLanguage("en")}
                 className={`px-3 py-1 rounded-full transition-all duration-300 text-sm font-medium ${
-                  language === 'en'
-                    ? 'bg-teal-600 text-white shadow-sm'
-                    : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
+                  language === "en"
+                    ? "bg-teal-600 text-white shadow-sm"
+                    : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
                 }`}
               >
                 EN
               </button>
               <button
-                onClick={() => setLanguage('jp')}
+                onClick={() => switchLanguage("ja")}
                 className={`px-3 py-1 rounded-full transition-all duration-300 text-sm font-medium ${
-                  language === 'jp'
-                    ? 'bg-teal-600 text-white shadow-sm'
-                    : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
+                  language === "ja"
+                    ? "bg-teal-600 text-white shadow-sm"
+                    : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
                 }`}
               >
                 JP
@@ -92,7 +103,8 @@ export function Header({ language, setLanguage }: HeaderProps) {
         {/* Mobile Menu */}
         {mobileMenuOpen && (
           <nav className="md:hidden mt-4 pb-4 flex flex-col gap-2 bg-white dark:bg-gray-900 rounded-lg p-4 border border-gray-200 dark:border-gray-800 shadow-lg">
-            {navItems[language].map((item, index) => (
+            {/* FIX: Add optional chaining to prevent map error */}
+            {navItems[language]?.map((item, index) => (
               <button
                 key={item}
                 onClick={() => scrollToSection(index)}
@@ -100,7 +112,8 @@ export function Header({ language, setLanguage }: HeaderProps) {
               >
                 {item}
               </button>
-            ))}
+            )) || []}{" "}
+            {/* Add fallback empty array */}
           </nav>
         )}
       </div>

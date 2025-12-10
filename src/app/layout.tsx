@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
 import Providers from "@/providers/Providers";
+// Import your metadata from your config file
+import { metadata as metadataEN, metadataJP } from "@/app/layout-config";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -13,116 +15,48 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: {
-    default: "Suman Basnet — Full Stack Developer & Digital Craftsman | MERN Stack Specialist",
-    template: "%s | Suman Basnet"
-  },
-  description: "Suman Basnet is a passionate Full Stack Developer specializing in MERN stack and Next.js. With 3+ years of experience, I build scalable web applications, modern interfaces, and digital solutions. Expertise in React, Node.js, MongoDB, TypeScript, and modern web technologies.",
-  keywords: [
-    "Suman Basnet",
-    "Full Stack Developer",
-    "MERN Stack Developer",
-    "React Developer",
-    "Next.js Developer",
-    "JavaScript Developer",
-    "Node.js Developer",
-    "Web Application Developer",
-    "Frontend Developer",
-    "Backend Developer",
-    "TypeScript Developer",
-    "MongoDB Developer",
-    "Express.js Developer",
-    "Web Designer",
-    "UI/UX Designer",
-    "Digital Craftsman",
-    "Web Solutions",
-    "Portfolio",
-    "Nepal Developer",
-    "Japan Developer"
-  ],
-  authors: [{ name: "Suman Basnet" }],
-  creator: "Suman Basnet",
-  publisher: "Suman Basnet",
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
-  },
-  metadataBase: new URL('https://suman-basnet.com.np'),
-  alternates: {
-    canonical: '/',
-    languages: {
-      'en': '/en',
-      'ja': '/jp',
-    },
-  },
-  openGraph: {
-    type: 'profile',
-    locale: 'en_US',
-    url: 'https://suman-basnet.com.np',
-    title: "Suman Basnet — Full Stack Developer & Digital Craftsman",
-    description: "Passionate Full Stack Developer specializing in MERN stack and Next.js. Building scalable web applications and digital solutions with modern technologies.",
-    siteName: "Suman Basnet Portfolio",
-    images: [
-      {
-        url: '/og-image.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'Suman Basnet - Full Stack Developer Portfolio',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    site: '@sumanbasnet',
-    creator: '@sumanbasnet',
-    title: "Suman Basnet — Full Stack Developer & Digital Craftsman",
-    description: "MERN Stack Specialist building scalable web applications with React, Node.js, and modern technologies. 3+ years of development experience.",
-    images: ['/twitter-image.jpg'],
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
-  },
-  verification: {
-    // google: 'your-google-search-console-verification',
-    // yandex: 'your-yandex-verification',
-    // yandex: 'your-yandex-verification',
-  },
-  category: 'technology',
-  other: {
-    'theme-color': '#0f766e',
-    'msapplication-TileColor': '#0f766e',
-    'apple-mobile-web-app-capable': 'yes',
-    'apple-mobile-web-app-status-bar-style': 'default',
-  }
+const notoSansJP = Noto_Sans_JP({
+  variable: "--font-noto-sans-jp",
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+});
+
+type Props = {
+  children: React.ReactNode;
+  params?: Promise<{ lang?: string }>; // Make params optional
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default async function RootLayout({ children, params }: Props) {
+  // Handle async params
+  let lang = 'en';
+  
+  if (params) {
+    try {
+      const resolvedParams = await params;
+      lang = resolvedParams.lang || 'en';
+    } catch (error) {
+      console.error('Error resolving params:', error);
+    }
+  }
+  
+  const isJapanese = lang === 'ja';
+  const currentMetadata = isJapanese ? metadataJP : metadataEN;
+  const currentFont = isJapanese ? notoSansJP : geistSans;
+
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Person',
     name: 'Suman Basnet',
-    url: 'https://suman-basnet.com.np',
+    url: `https://suman-basnet.com.np${isJapanese ? '/ja' : ''}`,
     image: 'https://suman-basnet.com.np/my-image.png',
-    jobTitle: 'Full Stack Developer',
+    jobTitle: isJapanese ? 'フルスタックデベロッパー' : 'Full Stack Developer',
     worksFor: {
       '@type': 'Organization',
       name: 'Freelance',
     },
-    description: 'Full Stack Developer specializing in MERN stack and Next.js applications with 3+ years of experience.',
+    description: isJapanese 
+      ? 'MERNスタックとNext.jsアプリケーションを専門とするフルスタックデベロッパー。3年以上の経験。'
+      : 'Full Stack Developer specializing in MERN stack and Next.js applications with 3+ years of experience.',
     knowsAbout: [
       'JavaScript',
       'TypeScript',
@@ -139,11 +73,15 @@ export default function RootLayout({
       'UI/UX Design',
       'Responsive Web Design'
     ],
-    knowsLanguage: ['English', 'Japanese', 'Nepali','Hindi'],
-    hasCredential: 'Bachelor in Computer Science',
+    knowsLanguage: ['English', 'Japanese', 'Nepali', 'Hindi'],
+    hasCredential: isJapanese 
+      ? 'コンピュータ科学学士'
+      : 'Bachelor in Computer Science',
     alumniOf: {
       '@type': 'EducationalOrganization',
-      name: 'Nara Computer Vocational School'
+      name: isJapanese 
+        ? '奈良コンピュータ専門学校'
+        : 'Nara Computer Vocational School'
     },
     location: {
       '@type': 'Place',
@@ -158,42 +96,84 @@ export default function RootLayout({
     },
     sameAs: [
       'https://github.com/sumanbasnet07',
-      'https://www.facebook.com/suman.basnet.5095110/'
+      'https://www.facebook.com/suman.basnet.5095110/',
+      'https://www.linkedin.com/in/sumanbasnet07/',
+      'https://twitter.com/sumanbasnet'
     ]
   };
 
   const websiteJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: 'Suman Basnet Portfolio',
-    description: 'Portfolio of Suman Basnet - Full Stack Developer specializing in MERN stack and Next.js applications',
-    url: 'https://suman-basnet.com.np',
+    name: isJapanese 
+      ? 'Suman Basnetポートフォリオ' 
+      : 'Suman Basnet Portfolio',
+    description: isJapanese
+      ? 'Suman Basnetのポートフォリオ - MERNスタックとNext.jsアプリケーションを専門とするフルスタックデベロッパー'
+      : 'Portfolio of Suman Basnet - Full Stack Developer specializing in MERN stack and Next.js applications',
+    url: `https://suman-basnet.com.np${isJapanese ? '/ja' : ''}`,
     author: {
       '@type': 'Person',
       name: 'Suman Basnet'
     },
-    inLanguage: ['en', 'jp']
+    inLanguage: isJapanese ? 'ja' : 'en',
+    potentialAction: {
+      '@type': 'ReadAction',
+      target: `https://suman-basnet.com.np${isJapanese ? '/ja' : ''}`
+    }
   };
 
   return (
-    <html lang="en" className="scroll-smooth">
+    <html 
+      lang={isJapanese ? 'ja' : 'en'} 
+      className="scroll-smooth"
+      dir={isJapanese ? 'ltr' : 'ltr'}
+    >
       <head>
         {/* Favicon */}
         <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="icon" href="/favicon.jpg" type="image/jpg" />
+        <link rel="apple-touch-icon" href="/apple-icon.png" />
         <link rel="manifest" href="/site.webmanifest" />
         
         {/* Preload critical resources */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         
-        {/* Additional meta tags for better SEO */}
+        {/* Viewport */}
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+        
+        {/* Theme Color */}
         <meta name="theme-color" content="#0f766e" />
         <meta name="msapplication-TileColor" content="#0f766e" />
+        
+        {/* App Capable */}
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        
+        {/* Hreflang for multilingual SEO */}
+        <link rel="alternate" href="https://suman-basnet.com.np" hrefLang="en" />
+        <link rel="alternate" href="https://suman-basnet.com.np/ja" hrefLang="ja" />
+        <link rel="alternate" href="https://suman-basnet.com.np" hrefLang="x-default" />
+        
+        {/* Canonical URL */}
+        <link rel="canonical" href={`https://suman-basnet.com.np${isJapanese ? '/ja' : ''}`} />
+        
+        {/* Open Graph for Japanese */}
+        {isJapanese && (
+          <>
+            <meta property="og:locale" content="ja_JP" />
+            <meta property="og:locale:alternate" content="en_US" />
+          </>
+        )}
+        
+        {/* Open Graph for English */}
+        {!isJapanese && (
+          <>
+            <meta property="og:locale" content="en_US" />
+            <meta property="og:locale:alternate" content="ja_JP" />
+          </>
+        )}
         
         {/* Structured Data */}
         <script
@@ -205,58 +185,79 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
         
-        {/* Additional SEO Meta Tags */}
+        {/* SEO Meta Tags */}
         <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
         <meta name="googlebot" content="index, follow" />
         <meta name="bingbot" content="index, follow" />
         
-        {/* Geo Location */}
-        <meta name="geo.region" content="NP" />
-        <meta name="geo.placename" content="Kathmandu" />
-        <meta name="geo.position" content="27.7172;85.3240" />
-        <meta name="ICBM" content="27.7172, 85.3240" />
+        {/* Geo Location - Add Japan for Japanese version */}
+        {isJapanese ? (
+          <>
+            <meta name="geo.region" content="JP-27" />
+            <meta name="geo.placename" content="Osaka" />
+            <meta name="geo.position" content="34.6937;135.5023" />
+            <meta name="ICBM" content="34.6937, 135.5023" />
+          </>
+        ) : (
+          <>
+            <meta name="geo.region" content="NP" />
+            <meta name="geo.placename" content="Kathmandu" />
+            <meta name="geo.position" content="27.7172;85.3240" />
+            <meta name="ICBM" content="27.7172, 85.3240" />
+          </>
+        )}
         
-        {/* Social Media Verification */}
+        {/* Social Media */}
         <meta name="twitter:site" content="@sumanbasnet" />
         <meta name="twitter:creator" content="@sumanbasnet" />
-        
-        {/* Additional Open Graph */}
-        <meta property="og:email" content="suman.basnet@example.com" />
-        <meta property="og:phone_number" content="+977-9841XXXXXX" />
-        <meta property="og:country-name" content="Nepal" />
         
         {/* Performance Hints */}
         <link rel="dns-prefetch" href="//fonts.googleapis.com" />
         <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+        
+        {/* Additional SEO */}
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content={isJapanese ? "Suman Basnetポートフォリオ" : "Suman Basnet Portfolio"} />
+        
+        {/* Add language-specific copyright */}
+        <meta name="copyright" content={`© ${new Date().getFullYear()} Suman Basnet`} />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white dark:bg-gray-900 transition-colors duration-300`}
+        className={`${currentFont.variable} ${geistMono.variable} antialiased bg-white dark:bg-gray-900 transition-colors duration-300`}
       >
         <Providers>
           {children}
         </Providers>
         
-        {/* Performance Monitoring Script */}
+        {/* Performance Monitoring */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
-              // Simple performance monitoring
               window.addEventListener('load', function() {
                 if (typeof performance !== 'undefined' && performance.mark) {
                   performance.mark('page-fully-loaded');
                 }
                 
-                // Track page views
+                // Track language preference
+                const lang = '${lang}';
                 if (typeof gtag !== 'undefined') {
+                  gtag('set', 'user_properties', {
+                    preferred_language: lang
+                  });
                   gtag('config', 'GA_MEASUREMENT_ID', {
                     page_title: document.title,
-                    page_location: window.location.href
+                    page_location: window.location.href,
+                    page_language: lang
                   });
                 }
               });
             `,
           }}
         />
+        
+        {/* Language detection for search engines */}
+        <meta name="google" content="nositelinkssearchbox" />
+        <meta name="google" content="notranslate" />
       </body>
     </html>
   );

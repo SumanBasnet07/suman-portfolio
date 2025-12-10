@@ -2,7 +2,7 @@
 
 import { ArrowRight, Download, Sparkles, Code, Globe, Server } from 'lucide-react';
 import { Button } from './ui/button';
-import { Language } from '@/app/page';
+import { Language } from '@/types/language';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 
 interface HeroProps {
@@ -25,8 +25,8 @@ export function Hero({ language }: HeroProps) {
       ],
       techStack: 'MERN • Next.js • TypeScript • Tailwind'
     },
-    jp: {
-      greeting: 'こんにちは、スマン・バスネットです 👋',
+    ja: {
+      greeting: 'こんにちは、バスネット・ス-マンです 👋',
       headline: 'フルスタック開発者 & デジタルクリエイター',
       subheadline: '複雑な問題をエレガントで高性能なWebソリューションに変えます。MERNスタックとNext.jsを専門とし、卓越したユーザー体験を提供するスケーラブルなアプリケーションを構築します。',
       viewProjects: '作品を見る',
@@ -175,9 +175,9 @@ export function Hero({ language }: HeroProps) {
                 {/* Floating Badge */}
                 <div className="absolute bottom-6 left-6 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm rounded-full px-4 py-2 shadow-lg border border-white/20">
                   <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                    <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
                     <span className="text-sm font-semibold text-gray-900 dark:text-white">
-                      Available for work
+                      Not Available for work
                     </span>
                   </div>
                 </div>

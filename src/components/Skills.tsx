@@ -1,7 +1,7 @@
 'use client';
 
 import { Code2, Database, Palette, GitBranch, Layers, Globe, Boxes, Smartphone, Workflow, Blocks, Cpu, Server, Zap, Type, Shield, Terminal } from 'lucide-react';
-import { Language } from '@/app/page';
+import { Language } from '@/types/language';
 
 interface SkillsProps {
   language: Language;
@@ -19,7 +19,7 @@ export function Skills({ language }: SkillsProps) {
         design: 'UI/UX & Design'
       }
     },
-    jp: {
+    ja: {
       title: '技術専門知識',
       subtitle: 'モダンでスケーラブルなアプリケーション構築のための包括的なツールキット',
       categories: {
@@ -37,38 +37,38 @@ export function Skills({ language }: SkillsProps) {
       skills: [
         {
           icon: Code2,
-          name: { en: 'HTML5 & CSS3', jp: 'HTML5 & CSS3' },
+          name: { en: 'HTML5 & CSS3', ja: 'HTML5 & CSS3' },
           level: 95,
           color: 'from-orange-500 to-red-500',
           description: { en: 'Semantic markup & modern CSS', jp: 'セマンティックマークアップとモダンCSS' }
         },
         {
           icon: Code2,
-          name: { en: 'TypeScript', jp: 'TypeScript' },
+          name: { en: 'TypeScript', ja: 'TypeScript' },
           level: 90,
           color: 'from-blue-500 to-indigo-600',
           description: { en: 'Type-safe JavaScript development', jp: 'タイプセーフなJavaScript開発' }
         },
         {
           icon: Blocks,
-          name: { en: 'React.js', jp: 'React.js' },
+          name: { en: 'React.js', ja: 'React.js' },
           level: 92,
           color: 'from-cyan-400 to-blue-500',
           description: { en: 'Component-based architecture', jp: 'コンポーネントベースアーキテクチャ' }
         },
         {
           icon: Globe,
-          name: { en: 'Next.js 14', jp: 'Next.js 14' },
+          name: { en: 'Next.js 14', ja: 'Next.js 14' },
           level: 88,
           color: 'from-slate-800 to-slate-900 dark:from-slate-700 dark:to-slate-800',
           description: { en: 'Full-stack React framework', jp: 'フルスタックReactフレームワーク' }
         },
         {
           icon: Layers,
-          name: { en: 'Tailwind CSS', jp: 'Tailwind CSS' },
+          name: { en: 'Tailwind CSS', ja: 'Tailwind CSS' },
           level: 94,
           color: 'from-teal-400 to-cyan-500',
-          description: { en: 'Utility-first CSS framework', jp: 'ユーティリティファーストCSSフレームワーク' }
+          description: { en: 'Utility-first CSS framework', ja: 'ユーティリティファーストCSSフレームワーク' }
         }
       ]
     },
@@ -77,17 +77,17 @@ export function Skills({ language }: SkillsProps) {
       skills: [
         {
           icon: Workflow,
-          name: { en: 'Node.js', jp: 'Node.js' },
+          name: { en: 'Node.js', ja: 'Node.js' },
           level: 85,
           color: 'from-green-500 to-emerald-600',
-          description: { en: 'Server-side JavaScript runtime', jp: 'サーバーサイドJavaScriptランタイム' }
+          description: { en: 'Server-side JavaScript runtime', ja: 'サーバーサイドJavaScriptランタイム' }
         },
         {
           icon: Database,
-          name: { en: 'MongoDB', jp: 'MongoDB' },
+          name: { en: 'MongoDB', ja: 'MongoDB' },
           level: 82,
           color: 'from-green-600 to-teal-700',
-          description: { en: 'NoSQL database management', jp: 'NoSQLデータベース管理' }
+          description: { en: 'NoSQL database management', ja: 'NoSQLデータベース管理' }
         },
         {
           icon: Server,

@@ -1,89 +1,108 @@
-'use client';
+"use client";
 
-import { Heart, Code2, Mail, ArrowUp, ExternalLink, Coffee } from 'lucide-react';
-import { Language } from '@/app/page';
-import { Button } from './ui/button';
+import {
+  Heart,
+  Code2,
+  Mail,
+  ArrowUp,
+  ExternalLink,
+  Coffee,
+} from "lucide-react";
+import { Language } from "@/types/language"; // Updated import
+import { Button } from "./ui/button";
+import { useRouter, usePathname } from "next/navigation"; // Add these imports
 
 interface FooterProps {
   language: Language;
-  setLanguage: (lang: Language) => void;
 }
 
-export function Footer({ language, setLanguage }: FooterProps) {
+export function Footer({ language }: FooterProps) {
+  const router = useRouter();
+  const pathname = usePathname();
+
   const content = {
     en: {
-      copyright: '© 2024 Suman Basnet. All rights reserved.',
-      madeWith: 'Crafted with',
-      and: 'and',
+      copyright: "© 2024 Suman Basnet. All rights reserved.",
+      madeWith: "Crafted with",
+      and: "and",
       links: {
-        home: 'Home',
-        projects: 'Projects',
-        skills: 'Skills',
-        about: 'About',
-        contact: 'Contact'
+        home: "Home",
+        projects: "Projects",
+        skills: "Skills",
+        about: "About",
+        contact: "Contact",
       },
-      description: 'Full-Stack Developer specializing in MERN stack and Next.js applications.',
-      quickLinks: 'Quick Links',
-      language: 'Language',
-      connect: 'Connect',
-      backToTop: 'Back to Top',
-      ready: 'Ready to start your project?',
-      getInTouch: 'Get in touch today!'
+      description:
+        "Full-Stack Developer specializing in MERN stack and Next.js applications.",
+      quickLinks: "Quick Links",
+      language: "Language",
+      connect: "Connect",
+      backToTop: "Back to Top",
+      ready: "Ready to start your project?",
+      getInTouch: "Get in touch today!",
     },
-    jp: {
-      copyright: '© 2024 スマン・バスネット. 全著作権所有。',
-      madeWith: '愛情を込めて作成',
-      and: 'と',
+    ja: {
+      copyright: "© 2024 スマン・バスネット. 全著作権所有。",
+      madeWith: "愛情を込めて作成",
+      and: "と",
       links: {
-        home: 'ホーム',
-        projects: 'プロジェクト',
-        skills: 'スキル',
-        about: '私について',
-        contact: 'お問い合わせ'
+        home: "ホーム",
+        projects: "プロジェクト",
+        skills: "スキル",
+        about: "私について",
+        contact: "お問い合わせ",
       },
-      description: 'MERNスタックとNext.jsアプリケーションを専門とするフルスタック開発者。',
-      quickLinks: 'クイックリンク',
-      language: '言語',
-      connect: 'コンタクト',
-      backToTop: 'トップに戻る',
-      ready: 'プロジェクトを始める準備はできていますか？',
-      getInTouch: '今日ご連絡ください！'
-    }
+      description:
+        "MERNスタックとNext.jsアプリケーションを専門とするフルスタック開発者。",
+      quickLinks: "クイックリンク",
+      language: "言語",
+      connect: "コンタクト",
+      backToTop: "トップに戻る",
+      ready: "プロジェクトを始める準備はできていますか？",
+      getInTouch: "今日ご連絡ください！",
+    },
   };
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
-    element?.scrollIntoView({ behavior: 'smooth' });
+    element?.scrollIntoView({ behavior: "smooth" });
   };
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  // Function to switch language using router
+  const switchLanguage = (newLang: Language) => {
+    // Replace the language prefix in the current pathname
+    const newPathname = pathname.replace(`/${language}`, `/${newLang}`);
+    router.push(newPathname);
   };
 
   const footerLinks = [
-    { label: content[language].links.home, id: 'hero' },
-    { label: content[language].links.projects, id: 'projects' },
-    { label: content[language].links.skills, id: 'skills' },
-    { label: content[language].links.about, id: 'about' },
-    { label: content[language].links.contact, id: 'contact' }
+    { label: content[language].links.home, id: "hero" },
+    { label: content[language].links.projects, id: "projects" },
+    { label: content[language].links.skills, id: "skills" },
+    { label: content[language].links.about, id: "about" },
+    { label: content[language].links.contact, id: "contact" },
   ];
 
   const socialLinks = [
-    { 
-      name: 'GitHub', 
-      url: 'https://github.com/sumanbasnet07', 
-      icon: Code2 
+    {
+      name: "GitHub",
+      url: "https://github.com/sumanbasnet07",
+      icon: Code2,
     },
-    { 
-      name: 'Email', 
-      url: 'mailto:suman@distrya.com', 
-      icon: Mail 
+    {
+      name: "Email",
+      url: "mailto:suman@distrya.com",
+      icon: Mail,
     },
-    { 
-      name: 'Facebook', 
-      url: 'https://www.facebook.com/suman.basnet.5095110/', 
-      icon: ExternalLink 
-    }
+    {
+      name: "Facebook",
+      url: "https://www.facebook.com/suman.basnet.5095110/",
+      icon: ExternalLink,
+    },
   ];
 
   return (
@@ -92,7 +111,7 @@ export function Footer({ language, setLanguage }: FooterProps) {
       <div className="absolute inset-0 bg-gradient-to-br from-gray-800 via-gray-900 to-black opacity-95"></div>
       <div className="absolute top-0 left-0 w-64 h-64 bg-teal-500/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
       <div className="absolute bottom-0 right-0 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
-      
+
       <div className="relative z-10">
         {/* CTA Section */}
         <div className="border-b border-gray-800">
@@ -105,11 +124,11 @@ export function Footer({ language, setLanguage }: FooterProps) {
                 {content[language].getInTouch}
               </p>
               <Button
-                onClick={() => scrollToSection('contact')}
+                onClick={() => scrollToSection("contact")}
                 className="bg-gradient-to-r from-teal-600 to-blue-600 hover:from-teal-700 hover:to-blue-700 text-white rounded-full px-8 py-6 shadow-lg shadow-teal-600/30 hover:shadow-teal-600/50 transition-all duration-300 transform hover:-translate-y-1"
               >
                 <Mail className="mr-2" size={20} />
-                {language === 'en' ? "Let's Talk" : 'お問い合わせ'}
+                {language === "en" ? "Let's Talk" : "お問い合わせ"}
               </Button>
             </div>
           </div>
@@ -124,9 +143,7 @@ export function Footer({ language, setLanguage }: FooterProps) {
                 <div className="w-10 h-10 bg-gradient-to-br from-teal-500 to-blue-500 rounded-xl flex items-center justify-center">
                   <Code2 className="text-white" size={20} />
                 </div>
-                <h3 className="text-xl font-bold text-white">
-                  Suman Basnet
-                </h3>
+                <h3 className="text-xl font-bold text-white">Suman Basnet</h3>
               </div>
               <p className="text-gray-400 leading-relaxed mb-4">
                 {content[language].description}
@@ -141,7 +158,10 @@ export function Footer({ language, setLanguage }: FooterProps) {
                     className="w-10 h-10 bg-gray-800 hover:bg-teal-600 rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg"
                     title={social.name}
                   >
-                    <social.icon className="text-gray-300 hover:text-white" size={18} />
+                    <social.icon
+                      className="text-gray-300 hover:text-white"
+                      size={18}
+                    />
                   </a>
                 ))}
               </div>
@@ -174,21 +194,21 @@ export function Footer({ language, setLanguage }: FooterProps) {
               </h3>
               <div className="flex items-center gap-2 bg-gray-800 rounded-full p-1 w-fit border border-gray-700">
                 <button
-                  onClick={() => setLanguage('en')}
+                  onClick={() => switchLanguage("en")}
                   className={`px-4 py-2 rounded-full transition-all duration-300 text-sm font-medium ${
-                    language === 'en'
-                      ? 'bg-gradient-to-r from-teal-600 to-blue-600 text-white shadow-lg'
-                      : 'text-gray-400 hover:text-white hover:bg-gray-700'
+                    language === "en"
+                      ? "bg-gradient-to-r from-teal-600 to-blue-600 text-white shadow-lg"
+                      : "text-gray-400 hover:text-white hover:bg-gray-700"
                   }`}
                 >
                   EN
                 </button>
                 <button
-                  onClick={() => setLanguage('jp')}
+                  onClick={() => switchLanguage("ja")}
                   className={`px-4 py-2 rounded-full transition-all duration-300 text-sm font-medium ${
-                    language === 'jp'
-                      ? 'bg-gradient-to-r from-teal-600 to-blue-600 text-white shadow-lg'
-                      : 'text-gray-400 hover:text-white hover:bg-gray-700'
+                    language === "ja"
+                      ? "bg-gradient-to-r from-teal-600 to-blue-600 text-white shadow-lg"
+                      : "text-gray-400 hover:text-white hover:bg-gray-700"
                   }`}
                 >
                   JP
@@ -206,7 +226,10 @@ export function Footer({ language, setLanguage }: FooterProps) {
                 className="bg-gray-800 hover:bg-gray-700 text-white rounded-full px-6 py-3 transition-all duration-300 transform hover:-translate-y-1 border border-gray-700 group"
                 variant="outline"
               >
-                <ArrowUp className="mr-2 group-hover:-translate-y-0.5 transition-transform" size={16} />
+                <ArrowUp
+                  className="mr-2 group-hover:-translate-y-0.5 transition-transform"
+                  size={16}
+                />
                 {content[language].backToTop}
               </Button>
             </div>
@@ -219,7 +242,10 @@ export function Footer({ language, setLanguage }: FooterProps) {
             </p>
             <div className="flex items-center gap-3 text-gray-400 text-sm">
               <span>{content[language].madeWith}</span>
-              <Heart className="text-red-500 fill-red-500 animate-pulse" size={16} />
+              <Heart
+                className="text-red-500 fill-red-500 animate-pulse"
+                size={16}
+              />
               <span>{content[language].and}</span>
               <Coffee className="text-amber-500" size={16} />
               <span>by Suman Basnet</span>

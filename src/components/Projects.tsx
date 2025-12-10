@@ -2,7 +2,7 @@
 
 import { ExternalLink, Github, ArrowUpRight, Star, Users, Calendar, Eye } from 'lucide-react';
 import { Button } from './ui/button';
-import { Language } from '@/app/page';
+import { Language } from '@/types/language';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 
 interface ProjectsProps {
@@ -21,7 +21,7 @@ export function Projects({ language }: ProjectsProps) {
       liveDemo: 'Live Demo',
       githubRepo: 'GitHub Repo'
     },
-    jp: {
+    ja: {
       title: '主なプロジェクト',
       subtitle: '最近の作品と革新的なソリューションの展示',
       viewProject: 'プロジェクトを見る',
@@ -36,10 +36,10 @@ export function Projects({ language }: ProjectsProps) {
   const projects = [
     {
       
-  title: { en: 'Distrya Blog & Tools', jp: 'Distrya ブログとツール' },
+  title: { en: 'Distrya Blog & Tools', ja: 'Distrya ブログとツール' },
   description: {
     en: 'A modern blog and tools platform featuring AI-powered content, dynamic categories, SEO-optimized articles, utilities, and a seamless reading experience.',
-    jp: 'AI搭載コンテンツ、動的カテゴリー、SEO最適化記事、便利ツール、スムーズな閲覧体験を備えた最新のブログ・ツールプラットフォーム。'
+    ja: 'AI搭載コンテンツ、動的カテゴリー、SEO最適化記事、便利ツール、スムーズな閲覧体験を備えた最新のブログ・ツールプラットフォーム。'
   },
   image: '/distrya-logo.png',
   tech: ['Next.js', 'Tailwind CSS', 'MongoDB', 'NextAuth', 'TypeScript'],
@@ -54,10 +54,10 @@ export function Projects({ language }: ProjectsProps) {
 },
 
 {
-  title: { en: 'Realtime Chat App', jp: 'リアルタイムチャットアプリ' },
+  title: { en: 'Realtime Chat App', ja: 'リアルタイムチャットアプリ' },
   description: {
     en: 'Fast and secure real-time chat application with live messaging, typing indicators, online status, and group conversations.',
-    jp: 'リアルタイムメッセージング、タイピングインジケーター、オンラインステータス、グループチャットに対応した高速で安全なチャットアプリ。'
+    ja: 'リアルタイムメッセージング、タイピングインジケーター、オンラインステータス、グループチャットに対応した高速で安全なチャットアプリ。'
   },
   image: '/chatapp.png',
   tech: ['React', 'Node.js', 'Socket.io', 'Express', 'MongoDB'],
