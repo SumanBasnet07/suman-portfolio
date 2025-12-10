@@ -1,0 +1,15 @@
+// app/robots.ts
+import { MetadataRoute } from 'next';
+
+export default function robots(): MetadataRoute.Robots {
+  return {
+    rules: {
+      userAgent: '*',
+      allow: '/',
+      // Add any paths you want to disallow
+      disallow: ['/api/', '/admin/'],
+    },
+    sitemap: 'https://suman-basnet.com.np/sitemap.xml',
+    host: 'https://suman-basnet.com.np',
+  };
+}
