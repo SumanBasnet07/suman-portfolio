@@ -17,7 +17,12 @@ interface HomePageProps {
 export default function HomePage({ params }: HomePageProps) {
   // Use React.use() to unwrap the params promise
   const resolvedParams = use(params);
-  const language = resolvedParams.lang as Language;
+
+  // Validate and ensure language is either 'en' or 'ja', default to 'en'
+  const language: Language =
+    resolvedParams.lang === "en" || resolvedParams.lang === "ja"
+      ? resolvedParams.lang
+      : "en";
 
   return (
     <div className="min-h-screen bg-white">

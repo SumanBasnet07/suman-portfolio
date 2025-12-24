@@ -96,8 +96,8 @@ export default async function RootLayout({
     sameAs: [
       "https://github.com/sumanbasnet07",
       "https://www.facebook.com/suman.basnet.5095110/",
-      "https://www.linkedin.com/in/sumanbasnet07/",
-      "https://twitter.com/sumanbasnet",
+      "https://www.linkedin.com/in/suman-basnet-73a07037a/",
+      "https://x.com/distrya_online",
     ],
   };
 

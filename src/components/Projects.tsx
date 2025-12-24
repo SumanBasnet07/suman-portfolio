@@ -70,42 +70,6 @@ export function Projects({ language }: ProjectsProps) {
     completed: 27000
   }
 },
-
-    // {
-    //   title: { en: 'Instagram Clone', jp: 'Instagram クローン' },
-    //   description: {
-    //     en: 'Full-stack social media platform with real-time messaging, photo sharing, stories, and advanced user interactions.',
-    //     jp: 'リアルタイムメッセージング、写真共有、ストーリー機能、高度なユーザーインタラクションを備えたフルスタックソーシャルメディアプラットフォーム。'
-    //   },
-    //   image: 'https://images.unsplash.com/photo-1605108222700-0d605d9ebafe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2JpbGUlMjBhcHAlMjBpbnRlcmZhY2V8ZW58MXx8fHwxNzYzMDYyMDgwfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
-    //   tech: ['React', 'Node.js', 'MongoDB', 'Express', 'Socket.io', 'JWT'],
-    //   githubUrl: '#',
-    //   liveUrl: '#',
-    //   featured: true,
-    //   stats: {
-    //     stars: 89,
-    //     users: 1800,
-    //     completed: 12000
-    //   }
-    // },
-    // {
-    //   title: { en: 'EduManage System', jp: 'EduManage システム' },
-    //   description: {
-    //     en: 'Comprehensive school management solution with student tracking, grade management, and automated reporting systems.',
-    //     jp: '生徒追跡、成績管理、自動レポートシステムを備えた包括的な学校管理ソリューション。'
-    //   },
-    //   image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlZHVjYXRpb24lMjB0ZWNobm9sb2d5fGVufDF8fHx8MTc2MzA3MjgwMXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
-    //   tech: ['MongoDB', 'Express', 'React', 'Node.js', 'Redux', 'Material-UI'],
-    //   githubUrl: '#',
-    //   liveUrl: '#',
-    //   featured: false,
-    //   stats: {
-    //     stars: 67,
-    //     users: 1500,
-    //     completed: 8000
-    //   }
-    // },
-   
     
     {
       title: { en: 'Mirai Language Institute', jp: '未来語学学院' },
