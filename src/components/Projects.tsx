@@ -97,7 +97,7 @@ export function Projects({ language }: ProjectsProps) {
   image: '/bicharbuzz.png',
   tech: ['MERN', 'Tailwind CSS', 'MDX', 'TypeScript', 'SEO Optimization'],
   githubUrl: '#',
-  liveUrl: 'https://bichar-buzz.vercel.app/',
+  liveUrl: 'https://bicharbuzz.hamrolink.com/',
   featured: true,
   stats: {
     stars: 165,
