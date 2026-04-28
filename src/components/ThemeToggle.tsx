@@ -1,8 +1,7 @@
 "use client";
 
 import { useTheme } from "next-themes";
-import { Switch } from "./ui/switch";
-import { Laptop, Moon, Sun } from "lucide-react";
+import { Moon, Sun } from "lucide-react";
 import { useEffect, useState } from "react";
 
 export default function ThemeToggle() {
@@ -13,17 +12,32 @@ export default function ThemeToggle() {
   if (!mounted) return null;
 
   const current = theme === "system" ? systemTheme : theme;
+  const isDark = current === "dark";
 
   return (
-    <div className="flex items-center gap-3">
-      <Laptop className={`${current === "system" ? "" : "opacity-40"} h-5 w-5`} />
+    <button
+      onClick={() => setTheme(isDark ? "light" : "dark")}
+      className="relative flex items-center gap-1.5 w-16 h-8 bg-gray-200 dark:bg-gray-700 rounded-full p-1 transition-all duration-300 border border-gray-300 dark:border-gray-600 hover:border-teal-400 dark:hover:border-teal-500"
+      aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+    >
+      {/* Sliding thumb */}
+      <div
+        className={`absolute w-6 h-6 rounded-full shadow-sm flex items-center justify-center transition-all duration-300 ${
+          isDark
+            ? 'translate-x-8 bg-gray-900'
+            : 'translate-x-0 bg-white'
+        }`}
+      >
+        {isDark ? (
+          <Moon className="w-3.5 h-3.5 text-blue-400" />
+        ) : (
+          <Sun className="w-3.5 h-3.5 text-amber-500" />
+        )}
+      </div>
 
-      <Sun className={`${current === "light" ? "" : "opacity-40"} h-5 w-5`} />
-      <Switch
-        checked={current === "dark"}
-        onCheckedChange={(checked) => setTheme(checked ? "dark" : "light")}
-      />
-      <Moon className={`${current === "dark" ? "" : "opacity-40"} h-5 w-5`} />
-    </div>
+      {/* Background icons */}
+      <Sun className={`w-3.5 h-3.5 text-amber-400 ml-0.5 transition-opacity duration-300 ${isDark ? 'opacity-30' : 'opacity-0'}`} />
+      <Moon className={`w-3.5 h-3.5 text-blue-300 ml-auto mr-0.5 transition-opacity duration-300 ${isDark ? 'opacity-0' : 'opacity-30'}`} />
+    </button>
   );
 }
