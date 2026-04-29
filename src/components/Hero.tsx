@@ -91,13 +91,13 @@ export function Hero({ language }: HeroProps) {
 
           <div className="pl-6 pr-4 py-4 flex flex-col sm:flex-row items-start sm:items-center gap-4">
             {/* Badge + text */}
-            <div className="flex items-start sm:items-center gap-3 flex-1 min-w-0">
+            <div className="flex items-start sm:items-center gap-3 flex-1 min-w-0 flex-wrap">
               <span className="flex-shrink-0 inline-flex items-center gap-1 px-2.5 py-1 bg-gradient-to-r from-orange-500 to-rose-500 text-white text-[10px] font-bold tracking-widest uppercase rounded-full shadow-sm">
                 <Sparkles className="w-2.5 h-2.5" />
                 {c.hamrolinkBadge}
               </span>
               <div className="min-w-0">
-                <p className="text-sm sm:text-base font-bold text-gray-900 dark:text-white leading-snug truncate">
+                <p className="text-xs sm:text-base font-bold text-gray-900 dark:text-white leading-snug truncate">
                   {c.hamrolinkHeadline}
                 </p>
                 <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">

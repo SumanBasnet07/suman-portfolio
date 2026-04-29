@@ -123,7 +123,7 @@ export function Header({ language }: HeaderProps) {
               <Menu className="h-5 w-5" />
             </Button>
           </SheetTrigger>
-          <SheetContent side="right" className="w-72 bg-white dark:bg-gray-950 border-l border-gray-200 dark:border-gray-800">
+          <SheetContent side="right" className="w-72 bg-white dark:bg-gray-950 border-l border-gray-200 dark:border-gray-800 p-6">
             <div className="flex flex-col gap-2 mt-8">
               {/* HamroLink hero CTA in mobile */}
               <a
