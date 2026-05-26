@@ -14,14 +14,27 @@ interface HeaderProps {
 export function Header({ language }: HeaderProps) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
   const router = useRouter();
   const pathname = usePathname();
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      setScrolled(currentScrollY > 20);
+
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setIsVisible(false); // scrolling down
+      } else {
+        setIsVisible(true);  // scrolling up
+      }
+      setLastScrollY(currentScrollY);
+    };
+
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [lastScrollY]);
 
   const navItems = {
     en: [
@@ -52,7 +65,9 @@ export function Header({ language }: HeaderProps) {
 
   return (
     <header
-      className={`sticky top-0 z-50 w-full transition-all duration-500 ${
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        isVisible ? 'translate-y-0' : '-translate-y-full'
+      } ${
         scrolled
           ? 'bg-white/90 dark:bg-gray-950/90 backdrop-blur-xl shadow-sm shadow-black/5 border-b border-gray-100/80 dark:border-gray-800/80'
           : 'bg-transparent border-b border-transparent'
@@ -91,26 +106,26 @@ export function Header({ language }: HeaderProps) {
             href="https://hamrolink.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="ml-3 flex items-center gap-1.5 px-3.5 py-1.5 bg-gradient-to-r from-orange-500 to-rose-500 hover:from-orange-600 hover:to-rose-600 text-white text-xs font-semibold rounded-full shadow-md shadow-orange-500/25 hover:shadow-orange-500/40 transition-all duration-300 hover:-translate-y-0.5 group"
+            className="ml-3 flex items-center gap-1.5 px-4 py-1.5 bg-gradient-to-r from-blue-600 to-teal-500 hover:from-blue-700 hover:to-teal-600 text-white text-xs font-semibold rounded-full shadow-md shadow-blue-500/20 hover:shadow-blue-500/30 transition-all duration-300 hover:-translate-y-0.5 group"
           >
-            <Sparkles className="w-3 h-3 group-hover:rotate-12 transition-transform" />
+            <Sparkles className="w-3.5 h-3.5 group-hover:rotate-12 transition-transform" />
             HamroLink
             <ExternalLink className="w-3 h-3 opacity-70" />
           </a>
 
           {/* Language toggle */}
-          <div className="flex items-center ml-3 bg-gray-100 dark:bg-gray-800 rounded-lg p-0.5 border border-gray-200 dark:border-gray-700">
+          <div className="flex items-center ml-3 bg-gray-100/80 dark:bg-gray-800/80 rounded-md p-0.5 border border-gray-200/50 dark:border-gray-700/50">
             {(['en', 'ja'] as Language[]).map((lang) => (
               <button
                 key={lang}
                 onClick={() => switchLanguage(lang)}
-                className={`px-3 py-1.5 text-xs font-semibold rounded-md transition-all duration-200 ${
+                className={`px-2 py-1 text-[10px] font-semibold rounded-[4px] transition-all duration-200 uppercase ${
                   language === lang
                     ? 'bg-white dark:bg-gray-700 text-gray-900 dark:text-white shadow-sm'
                     : 'text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200'
                 }`}
               >
-                {lang === 'en' ? 'EN' : '日本語'}
+                {lang}
               </button>
             ))}
           </div>
@@ -130,10 +145,10 @@ export function Header({ language }: HeaderProps) {
                 href="https://hamrolink.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 py-3 mb-4 bg-gradient-to-r from-orange-500 to-rose-500 text-white text-sm font-semibold rounded-xl shadow-lg"
+                className="flex items-center justify-center gap-2 py-3 mb-4 bg-gradient-to-r from-blue-600 to-teal-500 text-white text-sm font-semibold rounded-xl shadow-lg shadow-blue-500/20"
               >
                 <Sparkles className="w-4 h-4" />
-                Try HamroLink Free
+                View HamroLink
                 <ExternalLink className="w-4 h-4 opacity-80" />
               </a>
 

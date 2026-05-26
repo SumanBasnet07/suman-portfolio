@@ -30,13 +30,13 @@ export function Footer({ language }: FooterProps) {
       language: "Language",
       connect: "Navigate",
       backToTop: "Back to Top",
-      ready: "Ready to start your project?",
-      getInTouch: "Let's build something great together!",
+      ready: "Need a Product Engineer?",
+      getInTouch: "Building Practical Digital Systems for the Future.",
       hamrolinkSection: "My Product",
-      hamrolinkDesc: "AI-powered website builder for Nepali SMEs",
-      hamrolinkCTA: "Try for Free",
+      hamrolinkDesc: "AI-powered business infrastructure for Nepali SMEs",
+      hamrolinkCTA: "View Platform",
       hamrolinkPricing: "View Pricing",
-      hamrolinkHint: "From NPR 199/month",
+      hamrolinkHint: "NPR 199/month",
     },
     ja: {
       copyright: "© 2025 スマン・バスネット. 全著作権所有。",
@@ -54,13 +54,13 @@ export function Footer({ language }: FooterProps) {
       language: "言語",
       connect: "ナビゲーション",
       backToTop: "トップに戻る",
-      ready: "プロジェクトを始める準備はできていますか？",
-      getInTouch: "一緒に素晴らしいものを作りましょう！",
+      ready: "プロダクトエンジニアをお探しですか？",
+      getInTouch: "未来のための実践的なデジタルシステムを構築します。",
       hamrolinkSection: "自社製品",
-      hamrolinkDesc: "ネパールSME向けAIウェブサイトビルダー",
-      hamrolinkCTA: "無料で試す",
+      hamrolinkDesc: "ネパールSME向けAIビジネスインフラ",
+      hamrolinkCTA: "プラットフォームを見る",
       hamrolinkPricing: "料金を見る",
-      hamrolinkHint: "NPR 199/月〜",
+      hamrolinkHint: "NPR 199/月",
     },
   };
 
@@ -97,7 +97,7 @@ export function Footer({ language }: FooterProps) {
       <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-950 to-black" />
       <div className="absolute top-0 left-0 w-64 h-64 bg-teal-500/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
       <div className="absolute bottom-0 right-0 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
-      <div className="absolute top-1/2 right-1/4 w-48 h-48 bg-orange-500/5 rounded-full blur-3xl" />
+      <div className="absolute top-1/2 right-1/4 w-48 h-48 bg-teal-500/5 rounded-full blur-3xl" />
 
       <div className="relative z-10">
         {/* CTA Banner */}
@@ -166,21 +166,21 @@ export function Footer({ language }: FooterProps) {
             {/* HamroLink */}
             <div>
               <div className="flex items-center gap-1.5 mb-5">
-                <Sparkles className="w-3.5 h-3.5 text-orange-400" />
+                <Sparkles className="w-3.5 h-3.5 text-blue-400" />
                 <h3 className="text-sm font-bold text-white tracking-widest uppercase">{c.hamrolinkSection}</h3>
               </div>
-              <div className="p-4 rounded-2xl bg-gradient-to-br from-orange-950/50 to-rose-950/40 border border-orange-900/40 space-y-3">
+              <div className="p-4 rounded-2xl bg-gradient-to-br from-blue-950/50 to-teal-950/40 border border-blue-900/40 space-y-3">
                 <div>
-                  <p className="text-sm font-bold text-orange-300">HamroLink Digital</p>
+                  <p className="text-sm font-bold text-blue-300">HamroLink Digital</p>
                   <p className="text-xs text-gray-400 mt-0.5">{c.hamrolinkDesc}</p>
-                  <p className="text-xs font-semibold text-orange-400/70 mt-1">{c.hamrolinkHint}</p>
+                  <p className="text-xs font-semibold text-teal-400/70 mt-1">{c.hamrolinkHint}</p>
                 </div>
                 <div className="flex flex-col gap-1.5">
                   <a
                     href="https://hamrolink.com"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-1.5 py-2 bg-gradient-to-r from-orange-500 to-rose-500 hover:from-orange-600 hover:to-rose-600 text-white text-xs font-bold rounded-xl transition-all duration-300"
+                    className="flex items-center justify-center gap-1.5 py-2 bg-gradient-to-r from-blue-600 to-teal-500 hover:from-blue-700 hover:to-teal-600 text-white text-xs font-bold rounded-xl transition-all duration-300"
                   >
                     <Zap className="w-3 h-3" />
                     {c.hamrolinkCTA}

@@ -32,7 +32,7 @@ export function Contact({ language }: ContactProps) {
       location: 'Location',
       locationValue: 'Osaka, Japan',
       email: 'Email',
-      emailValue: 'suman@distrya.com',
+      emailValue: 'suman@hamrolink.com',
       phone: 'Phone',
       phoneValue: '+81 080 8542 4538',
       responseTime: 'Typically responds within 2 hours',
@@ -163,7 +163,7 @@ export function Contact({ language }: ContactProps) {
           </div>
 
           {/* Right: Contact form */}
-          <div className="bg-white dark:bg-gray-900 rounded-3xl p-8 shadow-xl border border-gray-100 dark:border-gray-800">
+          <div className="bg-white dark:bg-gray-900 rounded-3xl p-8 shadow-xl border border-gray-100 dark:border-gray-800 h-full flex flex-col">
             <div className="flex items-center gap-3 mb-8">
               <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-teal-500 to-blue-600 flex items-center justify-center shadow-lg">
                 <MessageCircle className="w-5 h-5 text-white" />
@@ -187,7 +187,7 @@ export function Contact({ language }: ContactProps) {
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-5">
+              <form onSubmit={handleSubmit} className="space-y-5 flex flex-col flex-1">
                 <div className="grid sm:grid-cols-2 gap-4">
                   <Input
                     type="text"
@@ -222,7 +222,7 @@ export function Contact({ language }: ContactProps) {
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   required
                   rows={6}
-                  className="rounded-xl border-gray-200 dark:border-gray-700 focus:border-teal-500 dark:focus:border-teal-500 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white placeholder:text-gray-400 resize-none transition-all duration-300"
+                  className="rounded-xl border-gray-200 dark:border-gray-700 focus:border-teal-500 dark:focus:border-teal-500 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white placeholder:text-gray-400 resize-none transition-all duration-300 flex-1"
                 />
 
                 <Button

@@ -1,8 +1,9 @@
 'use client';
 
 import {
-  Code2, Database, Palette, GitBranch, Layers, Globe, Boxes, Smartphone,
-  Workflow, Blocks, Cpu, Server, Zap, Shield, Terminal,
+  Code2, Database, Palette, Layers, Globe, 
+  Workflow, Server, Zap, Terminal, TrendingUp, Users, Settings, 
+  Sparkles, Cloud, Layout, BarChart, Bot, Search, Network, MonitorSmartphone
 } from 'lucide-react';
 import { Language } from '@/types/language';
 
@@ -13,28 +14,30 @@ interface SkillsProps {
 export function Skills({ language }: SkillsProps) {
   const content = {
     en: {
-      title: 'Technical Expertise',
-      subtitle: 'Comprehensive toolkit for building modern, scalable applications',
-      proficiency: 'Proficiency',
+      title: 'Technical Arsenal',
+      subtitle: 'The systems, tools, and strategies I use to build scalable products.',
+      context: 'Context',
       categories: {
-        frontend: 'Frontend Development',
-        backend: 'Backend Development',
-        tools: 'Tools & DevOps',
-        design: 'UI/UX & Design',
+        product: 'Product Engineering',
+        ai: 'AI & Automation',
+        fullstack: 'Full-Stack Development',
+        seo: 'SEO & Growth',
+        infrastructure: 'Infrastructure & Deployment',
       },
-      learning: 'Continuously learning and adapting to new technologies and best practices.',
+      learning: 'Continuously refining how to build scalable digital infrastructure efficiently.',
     },
     ja: {
-      title: '技術専門知識',
-      subtitle: 'モダンでスケーラブルなアプリケーション構築のための包括的なツールキット',
-      proficiency: '習熟度',
+      title: '技術的な強み',
+      subtitle: 'スケーラブルな製品を構築するためのシステム、ツール、戦略。',
+      context: 'コンテキスト',
       categories: {
-        frontend: 'フロントエンド開発',
-        backend: 'バックエンド開発',
-        tools: 'ツール & DevOps',
-        design: 'UI/UX & デザイン',
+        product: '製品エンジニアリング',
+        ai: 'AIと自動化',
+        fullstack: 'フルスタック開発',
+        seo: 'SEOと成長',
+        infrastructure: 'インフラと展開',
       },
-      learning: '新しい技術とベストプラクティスを継続的に学習し、適応しています。',
+      learning: 'スケーラブルなデジタルインフラを効率的に構築する方法を継続的に改善しています。',
     },
   };
 
@@ -42,42 +45,53 @@ export function Skills({ language }: SkillsProps) {
 
   const skillCategories = [
     {
-      title: c.categories.frontend,
+      title: c.categories.product,
       accent: 'teal',
       skills: [
-        { icon: Code2, name: { en: 'HTML5 & CSS3', ja: 'HTML5 & CSS3' }, level: 95, color: 'from-orange-500 to-red-500', desc: { en: 'Semantic markup & modern CSS', ja: 'セマンティックマークアップとモダンCSS' } },
-        { icon: Code2, name: { en: 'TypeScript', ja: 'TypeScript' }, level: 90, color: 'from-blue-500 to-indigo-600', desc: { en: 'Type-safe JavaScript development', ja: 'タイプセーフなJavaScript開発' } },
-        { icon: Blocks, name: { en: 'React.js', ja: 'React.js' }, level: 92, color: 'from-cyan-400 to-blue-500', desc: { en: 'Component-based architecture', ja: 'コンポーネントベースアーキテクチャ' } },
-        { icon: Globe, name: { en: 'Next.js 14', ja: 'Next.js 14' }, level: 88, color: 'from-slate-700 to-slate-900', desc: { en: 'Full-stack React framework', ja: 'フルスタックReactフレームワーク' } },
-        { icon: Layers, name: { en: 'Tailwind CSS', ja: 'Tailwind CSS' }, level: 94, color: 'from-teal-400 to-cyan-500', desc: { en: 'Utility-first CSS framework', ja: 'ユーティリティファーストCSSフレームワーク' } },
+        { icon: Workflow, name: { en: 'SaaS Architecture', ja: 'SaaS アーキテクチャ' }, context: 'Used in HamroLink', color: 'from-blue-500 to-indigo-600', desc: { en: 'System foundation', ja: 'システム基盤' } },
+        { icon: Network, name: { en: 'Multi-Tenant Systems', ja: 'マルチテナントシステム' }, context: 'Scalable platforms', color: 'from-cyan-400 to-blue-500', desc: { en: 'Data isolation', ja: 'データ分離' } },
+        { icon: Globe, name: { en: 'Product Strategy', ja: '製品戦略' }, context: 'Distribution-first', color: 'from-teal-400 to-cyan-500', desc: { en: 'User-focused planning', ja: 'ユーザー中心の計画' } },
+        { icon: MonitorSmartphone, name: { en: 'UI/UX Systems', ja: 'UI/UX システム' }, context: 'Design architecture', color: 'from-emerald-400 to-teal-500', desc: { en: 'Consistent experiences', ja: '一貫した体験' } },
       ],
     },
     {
-      title: c.categories.backend,
-      accent: 'blue',
-      skills: [
-        { icon: Workflow, name: { en: 'Node.js', ja: 'Node.js' }, level: 85, color: 'from-green-500 to-emerald-600', desc: { en: 'Server-side JavaScript runtime', ja: 'サーバーサイドJavaScriptランタイム' } },
-        { icon: Database, name: { en: 'MongoDB', ja: 'MongoDB' }, level: 82, color: 'from-green-600 to-teal-700', desc: { en: 'NoSQL database management', ja: 'NoSQLデータベース管理' } },
-        { icon: Server, name: { en: 'Express.js', ja: 'Express.js' }, level: 80, color: 'from-gray-500 to-gray-700', desc: { en: 'Web application framework', ja: 'Webアプリケーションフレームワーク' } },
-        { icon: Shield, name: { en: 'RESTful APIs', ja: 'RESTful API' }, level: 88, color: 'from-purple-500 to-pink-500', desc: { en: 'API design & development', ja: 'API設計と開発' } },
-      ],
-    },
-    {
-      title: c.categories.tools,
+      title: c.categories.ai,
       accent: 'purple',
       skills: [
-        { icon: GitBranch, name: { en: 'Git & GitHub', ja: 'Git & GitHub' }, level: 90, color: 'from-orange-500 to-red-600', desc: { en: 'Version control & collaboration', ja: 'バージョン管理とコラボレーション' } },
-        { icon: Terminal, name: { en: 'CLI & DevOps', ja: 'CLI & DevOps' }, level: 75, color: 'from-gray-500 to-gray-700', desc: { en: 'Command line & deployment', ja: 'コマンドラインとデプロイメント' } },
-        { icon: Zap, name: { en: 'Vercel & Netlify', ja: 'Vercel & Netlify' }, level: 85, color: 'from-yellow-500 to-orange-500', desc: { en: 'Modern deployment platforms', ja: 'モダンデプロイメントプラットフォーム' } },
+        { icon: Zap, name: { en: 'AI Workflow Design', ja: 'AIワークフロー設計' }, context: 'Production AI features', color: 'from-purple-500 to-pink-500', desc: { en: 'Beyond chatbots', ja: 'チャットボットを超えて' } },
+        { icon: Bot, name: { en: 'Prompt Engineering', ja: 'プロンプトエンジニアリング' }, context: 'LLM integration', color: 'from-fuchsia-500 to-purple-600', desc: { en: 'Optimized outputs', ja: '最適化された出力' } },
+        { icon: Sparkles, name: { en: 'AI-Assisted UX', ja: 'AI支援 UX' }, context: 'Smart generation', color: 'from-violet-500 to-fuchsia-500', desc: { en: 'Frictionless flows', ja: 'スムーズなフロー' } },
+        { icon: Settings, name: { en: 'Automation Logic', ja: '自動化ロジック' }, context: 'Business efficiency', color: 'from-indigo-400 to-purple-500', desc: { en: 'Workflow optimization', ja: 'ワークフロー最適化' } },
       ],
     },
     {
-      title: c.categories.design,
+      title: c.categories.fullstack,
+      accent: 'blue',
+      skills: [
+        { icon: Layers, name: { en: 'Next.js 14', ja: 'Next.js 14' }, context: 'Used in HamroLink', color: 'from-slate-700 to-slate-900', desc: { en: 'React framework', ja: 'Reactフレームワーク' } },
+        { icon: Code2, name: { en: 'TypeScript', ja: 'TypeScript' }, context: 'Default for projects', color: 'from-blue-500 to-indigo-600', desc: { en: 'Type-safe development', ja: 'タイプセーフ開発' } },
+        { icon: Database, name: { en: 'MongoDB & NoSQL', ja: 'MongoDB / NoSQL' }, context: 'Data architecture', color: 'from-sky-500 to-blue-600', desc: { en: 'Flexible documents', ja: '柔軟なドキュメント' } },
+        { icon: Server, name: { en: 'API Systems', ja: 'API システム' }, context: 'REST & GraphQL', color: 'from-cyan-500 to-blue-500', desc: { en: 'Robust endpoints', ja: '堅牢なエンドポイント' } },
+      ],
+    },
+    {
+      title: c.categories.seo,
+      accent: 'orange',
+      skills: [
+        { icon: TrendingUp, name: { en: 'Programmatic SEO', ja: 'プログラマティックSEO' }, context: 'Scalable acquisition', color: 'from-orange-500 to-red-500', desc: { en: 'Search-driven growth', ja: '検索主導の成長' } },
+        { icon: Layout, name: { en: 'Content Systems', ja: 'コンテンツシステム' }, context: 'Used in Distrya', color: 'from-amber-400 to-orange-500', desc: { en: 'Publishing workflows', ja: '公開ワークフロー' } },
+        { icon: Search, name: { en: 'Technical SEO', ja: 'テクニカルSEO' }, context: 'Platform visibility', color: 'from-red-400 to-rose-500', desc: { en: 'Architecture optimization', ja: 'アーキテクチャ最適化' } },
+        { icon: Zap, name: { en: 'Performance Optimization', ja: 'パフォーマンス最適化' }, context: 'Core Web Vitals', color: 'from-yellow-500 to-orange-500', desc: { en: 'Fast load times', ja: '高速な読み込み' } },
+      ],
+    },
+    {
+      title: c.categories.infrastructure,
       accent: 'rose',
       skills: [
-        { icon: Palette, name: { en: 'UI/UX Design', ja: 'UI/UX デザイン' }, level: 78, color: 'from-purple-400 to-pink-500', desc: { en: 'User interface & experience design', ja: 'ユーザーインターフェースと体験設計' } },
-        { icon: Smartphone, name: { en: 'Responsive Design', ja: 'レスポンシブデザイン' }, level: 95, color: 'from-indigo-400 to-purple-500', desc: { en: 'Mobile-first responsive layouts', ja: 'モバイルファーストレスポンシブレイアウト' } },
-        { icon: Cpu, name: { en: 'Figma & Adobe XD', ja: 'Figma & Adobe XD' }, level: 70, color: 'from-pink-500 to-rose-500', desc: { en: 'Design prototyping tools', ja: 'デザインプロトタイピングツール' } },
+        { icon: Layers, name: { en: 'Scalable Architecture', ja: 'スケーラブルアーキテクチャ' }, context: 'Cloud foundation', color: 'from-rose-500 to-pink-600', desc: { en: 'System design', ja: 'システム設計' } },
+        { icon: Terminal, name: { en: 'Deployment Pipelines', ja: '展開パイプライン' }, context: 'CI/CD flows', color: 'from-pink-500 to-rose-400', desc: { en: 'Automated delivery', ja: '自動化された配信' } },
+        { icon: Database, name: { en: 'Database Design', ja: 'データベース設計' }, context: 'Schema strategy', color: 'from-fuchsia-500 to-pink-500', desc: { en: 'Efficient queries', ja: '効率的なクエリ' } },
+        { icon: Cloud, name: { en: 'Cloud Workflows', ja: 'クラウドワークフロー' }, context: 'AWS, Vercel', color: 'from-red-500 to-rose-600', desc: { en: 'Modern hosting', ja: 'モダンなホスティング' } },
       ],
     },
   ];
@@ -87,6 +101,7 @@ export function Skills({ language }: SkillsProps) {
     blue: 'bg-blue-50 dark:bg-blue-950/40 border-blue-100 dark:border-blue-900/50 text-blue-700 dark:text-blue-300',
     purple: 'bg-purple-50 dark:bg-purple-950/40 border-purple-100 dark:border-purple-900/50 text-purple-700 dark:text-purple-300',
     rose: 'bg-rose-50 dark:bg-rose-950/40 border-rose-100 dark:border-rose-900/50 text-rose-700 dark:text-rose-300',
+    orange: 'bg-orange-50 dark:bg-orange-950/40 border-orange-100 dark:border-orange-900/50 text-orange-700 dark:text-orange-300',
   };
 
   return (
@@ -115,7 +130,7 @@ export function Skills({ language }: SkillsProps) {
                 <div className="flex-1 h-px bg-gray-100 dark:bg-gray-800" />
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
                 {category.skills.map((skill, si) => (
                   <div
                     key={si}
@@ -139,21 +154,15 @@ export function Skills({ language }: SkillsProps) {
                       {skill.desc[language]}
                     </p>
 
-                    {/* Progress bar */}
+                    {/* Context string instead of progress bar */}
                     <div>
-                      <div className="flex justify-between items-center mb-1.5">
+                      <div className="flex justify-between items-center bg-gray-50 dark:bg-gray-800/50 rounded-lg px-3 py-2 border border-gray-100 dark:border-gray-700">
                         <span className="text-[10px] font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wider">
-                          {c.proficiency}
+                          {c.context}
                         </span>
-                        <span className="text-[10px] font-bold text-gray-600 dark:text-gray-300">
-                          {skill.level}%
+                        <span className="text-[11px] font-bold text-gray-700 dark:text-gray-300">
+                          {skill.context}
                         </span>
-                      </div>
-                      <div className="w-full bg-gray-100 dark:bg-gray-700 rounded-full h-1.5">
-                        <div
-                          className={`h-1.5 rounded-full bg-gradient-to-r ${skill.color}`}
-                          style={{ width: `${skill.level}%` }}
-                        />
                       </div>
                     </div>
 

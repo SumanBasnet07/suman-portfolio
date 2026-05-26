@@ -3,6 +3,7 @@
 import { use } from "react";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
+import { SocialProof } from "@/components/SocialProof";
 import { Skills } from "@/components/Skills";
 import { Projects } from "@/components/Projects";
 import { About } from "@/components/About";
@@ -28,6 +29,7 @@ export default function HomePage({ params }: HomePageProps) {
     <div className="min-h-screen bg-white">
       <Header language={language} />
       <Hero language={language} />
+      <SocialProof language={language} />
       <Skills language={language} />
       <Projects language={language} />
       <About language={language} />

@@ -16,48 +16,62 @@ export function About({ language }: AboutProps) {
     en: {
       title: 'About Me',
       subtitle: 'The story behind the code',
-      description: `I'm a passionate Full-Stack Developer with over 3 years of experience crafting digital solutions that make a real difference. My journey started with curiosity and has evolved into a career dedicated to exceptional user experiences.
+      description: `I’m a product-focused full-stack engineer interested in building scalable digital systems and AI-powered web platforms.
 
-I specialize in the MERN stack (MongoDB, Express.js, React, Node.js) and modern frameworks like Next.js 14. I also founded HamroLink Digital — an AI-powered business presence platform built for Nepal's SMEs, helping local shops and businesses go online in minutes.
+Currently, I’m exploring how localized software and automation can improve digital adoption for businesses in Nepal through projects like HamroLink.
 
-When I'm not coding, you'll find me contributing to open-source, writing for Distrya, or mentoring aspiring developers.`,
+I enjoy combining product thinking, engineering, and user-focused design to create practical solutions.`,
       downloadCV: 'Download Resume',
       experience: 'Years Experience',
-      projectsCompleted: 'Projects Completed',
-      happyClients: 'Happy Clients',
-      codeCommits: 'Code Commits',
+      projectsCompleted: 'Products Shipped',
+      happyClients: 'Businesses Reached',
+      codeCommits: 'Private Commits',
       location: 'Osaka, Japan',
-      availability: 'Coding is fun',
-      education: 'Computer Science Graduate',
-      passion: 'Clean Code Advocate',
+      availability: 'Building for Nepal',
+      education: 'Systems Thinker',
+      passion: 'Product Strategy',
       hamrolinkTag: 'Founder · HamroLink Digital',
-      currentFocus: 'Currently focused on building HamroLink — AI-powered websites for Nepali SMEs, alongside scalable Next.js 14 applications.',
-      philosophy: 'I believe in writing code that not only works but is maintainable, scalable, and a joy to work with.',
-      professional: 'Professional',
-      developer: 'Developer',
+      interestedInTitle: 'What I’m Interested In',
+      interestedIn: [
+        'Product Engineering',
+        'SaaS Systems',
+        'AI-Assisted UX',
+        'Scalable Infrastructure',
+        'Localization & Digital Adoption',
+        'Full-Stack Development'
+      ],
+      professional: 'Product Engineer',
+      developer: 'Builder',
     },
     ja: {
       title: '私について',
       subtitle: 'コードの背後にあるストーリー',
-      description: `私は3年以上の経験を持つ情熱的なフルスタック開発者で、変化をもたらすデジタルソリューションを創り上げています。Web開発への旅は好奇心から始まり、卓越したユーザー体験を創造することに専念するキャリアへと進化しました。
+      description: `私は、スケーラブルなデジタルシステムやAI搭載のWebプラットフォームの構築に関心を持つ、製品重視のフルスタックエンジニアです。
+      
+現在、HamroLinkのようなプロジェクトを通じて、ローカライズされたソフトウェアと自動化がネパールのビジネスのデジタル導入をどのように改善できるかを探求しています。
 
-MERNスタックとNext.js 14を専門とし、HamroLink Digitalも創設しました。ネパールの中小企業がオンラインで存在感を示すためのAI搭載プラットフォームです。
-
-コーディングをしていないときは、オープンソースへの貢献、Distryaへの執筆、または志望する開発者のメンタリングを行っています。`,
+製品思考、エンジニアリング、ユーザー中心のデザインを組み合わせて、実践的なソリューションを生み出すことを楽しんでいます。`,
       downloadCV: '履歴書をダウンロード',
       experience: '年の経験',
-      projectsCompleted: '完了プロジェクト',
-      happyClients: '満足なクライアント',
-      codeCommits: 'コードコミット',
+      projectsCompleted: '出荷製品',
+      happyClients: '到達企業数',
+      codeCommits: 'プライベートコミット',
       location: '大阪、日本',
-      availability: 'Coding is fun',
-      education: 'コンピューターサイエンス卒業',
-      passion: 'クリーンコード提唱者',
+      availability: 'ネパール向けに構築',
+      education: 'システム思考者',
+      passion: '製品戦略',
       hamrolinkTag: '創設者 · HamroLink Digital',
-      currentFocus: '現在はHamroLink（ネパールSME向けAI搭載ウェブサイト）とNext.js 14アプリの構築に注力しています。',
-      philosophy: '単に動作するだけでなく、保守性が高く、スケーラブルで、作業が楽しいコードを書くことを信じています。',
-      professional: 'プロフェッショナル',
-      developer: '開発者',
+      interestedInTitle: '関心があること',
+      interestedIn: [
+        '製品エンジニアリング',
+        'SaaSシステム',
+        'AI支援UX',
+        'スケーラブルなインフラ',
+        'ローカリゼーションとデジタル導入',
+        'フルスタック開発'
+      ],
+      professional: 'プロダクトエンジニア',
+      developer: 'ビルダー',
     },
   };
 
@@ -100,10 +114,10 @@ MERNスタックとNext.js 14を専門とし、HamroLink Digitalも創設しま�
           <p className="text-xl text-gray-500 dark:text-gray-400 max-w-2xl mx-auto">{c.subtitle}</p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
+        <div className="grid lg:grid-cols-2 gap-16">
           {/* Profile Photos */}
-          <div className="relative order-2 lg:order-1">
-            <div className="relative w-full max-w-lg mx-auto">
+          <div className="relative order-2 lg:order-1 h-full">
+            <div className="sticky top-32 relative w-full max-w-lg mx-auto">
               <div className="absolute inset-0 bg-gradient-to-br from-teal-400 via-blue-500 to-purple-600 rounded-3xl blur-3xl opacity-20 animate-pulse" />
 
               <div className="relative flex items-center justify-center min-h-[420px]">
@@ -160,66 +174,70 @@ MERNスタックとNext.js 14を専門とし、HamroLink Digitalも創設しま�
                 {c.description}
               </p>
 
-              {/* Current focus */}
-              <div className="p-5 bg-gradient-to-r from-teal-50 to-blue-50 dark:from-teal-950/30 dark:to-blue-950/30 rounded-2xl border border-teal-100 dark:border-teal-900/50">
-                <div className="flex items-start gap-3">
-                  <Sparkles className="w-5 h-5 text-teal-600 dark:text-teal-400 mt-0.5 flex-shrink-0" />
-                  <p className="text-sm text-gray-700 dark:text-gray-300 font-medium">{c.currentFocus}</p>
-                </div>
-              </div>
-
-              {/* Philosophy */}
-              <div className="p-5 bg-orange-50 dark:bg-orange-950/20 rounded-2xl border border-orange-100 dark:border-orange-900/40">
-                <div className="flex items-start gap-3">
-                  <BookOpen className="w-5 h-5 text-orange-600 dark:text-orange-400 mt-0.5 flex-shrink-0" />
-                  <p className="text-sm text-gray-700 dark:text-gray-300 italic leading-relaxed">{c.philosophy}</p>
+              {/* What I'm Interested In */}
+              <div className="pt-4">
+                <h4 className="text-sm font-bold text-gray-900 dark:text-white mb-4 uppercase tracking-wider">{c.interestedInTitle}</h4>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {c.interestedIn.map((item: string, idx: number) => (
+                    <div key={idx} className="flex items-center gap-2">
+                      <div className="w-1.5 h-1.5 rounded-full bg-teal-500 flex-shrink-0" />
+                      <span className="text-sm text-gray-700 dark:text-gray-300 font-medium">{item}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
+          </div>
+        </div>
 
-            {/* Personal info */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        {/* Full-width content section */}
+        <div className="w-full space-y-12 border-t border-gray-100 dark:border-gray-800 pt-12">
+          {/* Personal info */}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
               {personalInfo.map((info, i) => (
                 <div
                   key={i}
                   className={`flex items-center gap-3 p-3.5 rounded-xl transition-colors duration-300 ${
                     info.icon === Building2
-                      ? 'bg-orange-50 dark:bg-orange-950/20 hover:bg-orange-100 dark:hover:bg-orange-950/40 border border-orange-100 dark:border-orange-900/40 sm:col-span-2'
+                      ? 'bg-blue-50 dark:bg-blue-950/20 hover:bg-blue-100 dark:hover:bg-blue-950/40 border border-blue-100 dark:border-blue-900/40 col-span-2 md:col-span-1'
                       : 'bg-gray-50 dark:bg-gray-800/60 hover:bg-gray-100 dark:hover:bg-gray-800 border border-gray-100 dark:border-gray-700/60'
                   }`}
                 >
-                  <info.icon className={`w-4 h-4 flex-shrink-0 ${info.icon === Building2 ? 'text-orange-500' : 'text-teal-600 dark:text-teal-400'}`} />
-                  <span className={`text-sm font-semibold ${info.icon === Building2 ? 'text-orange-700 dark:text-orange-400' : 'text-gray-700 dark:text-gray-300'}`}>
+                  <info.icon className={`w-4 h-4 flex-shrink-0 ${info.icon === Building2 ? 'text-blue-600 dark:text-blue-400' : 'text-teal-600 dark:text-teal-400'}`} />
+                  <span className={`text-sm font-semibold ${info.icon === Building2 ? 'text-blue-700 dark:text-blue-400' : 'text-gray-700 dark:text-gray-300'}`}>
                     {info.text}
                   </span>
                 </div>
               ))}
             </div>
 
+          <div className="flex flex-col lg:flex-row gap-8 items-center justify-between">
             {/* Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            <div className="flex-1 grid grid-cols-2 md:grid-cols-4 gap-4 w-full">
               {stats.map((stat, i) => (
                 <div
                   key={i}
-                  className="text-center p-4 bg-gray-50 dark:bg-gray-800/60 rounded-2xl hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group border border-gray-100 dark:border-gray-700/60"
+                  className="text-center p-5 bg-gray-50 dark:bg-gray-800/60 rounded-2xl hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group border border-gray-100 dark:border-gray-700/60"
                 >
-                  <div className={`w-11 h-11 rounded-xl bg-gradient-to-br ${stat.color} flex items-center justify-center mb-3 mx-auto group-hover:scale-110 transition-transform duration-300 shadow-md`}>
-                    <stat.icon className="text-white" size={18} />
+                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${stat.color} flex items-center justify-center mb-4 mx-auto group-hover:scale-110 transition-transform duration-300 shadow-md`}>
+                    <stat.icon className="text-white" size={20} />
                   </div>
-                  <div className="text-2xl font-black text-gray-900 dark:text-white mb-0.5">{stat.number}</div>
-                  <div className="text-[10px] text-gray-500 dark:text-gray-400 font-semibold leading-tight uppercase tracking-wide">{stat.label}</div>
+                  <div className="text-3xl font-black text-gray-900 dark:text-white mb-1">{stat.number}</div>
+                  <div className="text-xs text-gray-500 dark:text-gray-400 font-semibold leading-tight uppercase tracking-wide">{stat.label}</div>
                 </div>
               ))}
             </div>
 
             {/* Download CTA */}
-            <Button
-              onClick={downloadCV}
-              className="bg-gradient-to-r from-teal-600 to-blue-600 hover:from-teal-700 hover:to-blue-700 text-white rounded-2xl px-8 py-6 shadow-xl shadow-teal-600/25 hover:shadow-teal-600/40 transition-all duration-300 hover:-translate-y-1 font-bold group"
-            >
-              <Download className="mr-2 group-hover:scale-110 transition-transform" size={18} />
-              {c.downloadCV}
-            </Button>
+            <div className="w-full lg:w-auto flex justify-center lg:justify-end">
+              <Button
+                onClick={downloadCV}
+                className="bg-gradient-to-r from-teal-600 to-blue-600 hover:from-teal-700 hover:to-blue-700 text-white rounded-2xl px-8 py-7 shadow-xl shadow-teal-600/25 hover:shadow-teal-600/40 transition-all duration-300 hover:-translate-y-1 font-bold group w-full sm:w-auto text-lg"
+              >
+                <Download className="mr-3 group-hover:scale-110 transition-transform" size={20} />
+                {c.downloadCV}
+              </Button>
+            </div>
           </div>
         </div>
       </div>

@@ -13,48 +13,48 @@ export function Hero({ language }: HeroProps) {
   const content = {
     en: {
       greeting: "Hi, I'm Suman Basnet 👋",
-      headline: 'Full-Stack Developer',
-      headlineAccent: '& Digital Craftsman',
+      headline: 'Product Engineer',
+      headlineAccent: '& SaaS Builder',
       subheadline:
-        'I transform complex problems into elegant, high-performance web solutions. Specializing in MERN Stack & Next.js, I build scalable applications that deliver exceptional user experiences.',
-      viewProjects: 'Explore My Work',
+        'Building scalable AI-powered web systems and exploring localized digital infrastructure for Nepalese businesses.',
+      viewProjects: 'View My Work',
       contactMe: "Let's Connect",
       downloadCV: 'Download CV',
       stats: [
-        { value: '50+', label: 'Projects Completed' },
-        { value: '3+', label: 'Years Experience' },
-        { value: '100%', label: 'Client Satisfaction' },
+        { value: '5+', label: 'SaaS Systems Built' },
+        { value: '10+', label: 'AI Workflow Projects' },
+        { value: '20+', label: 'Product Experiments' },
       ],
-      techStack: 'MERN • Next.js • TypeScript • Tailwind',
-      hamrolinkBadge: 'New Product',
-      hamrolinkHeadline: 'I built HamroLink — AI website builder for Nepali SMEs',
-      hamrolinkSub: 'Try it free or view pricing',
-      hamrolinkCTA: 'Try for Free',
-      hamrolinkPricing: 'View Pricing',
-      hamrolinkPriceHint: 'From NPR 199/mo',
+      techStack: 'Product Strategy • AI Workflows • SaaS Architecture',
+      hamrolinkBadge: 'Product Engineer',
+      hamrolinkHeadline: 'Building HamroLink — AI website builder for Nepali SMEs',
+      hamrolinkSub: 'Used by 10+ businesses',
+      hamrolinkCTA: 'View Platform',
+      hamrolinkPricing: 'See Pricing',
+      hamrolinkPriceHint: 'NPR 199/mo',
       notAvailable: 'Not Available for work',
     },
     ja: {
       greeting: 'こんにちは、バスネット・スーマンです 👋',
-      headline: 'フルスタック開発者',
-      headlineAccent: '& デジタルクリエイター',
+      headline: 'プロダクトエンジニア',
+      headlineAccent: '& SaaSビルダー',
       subheadline:
-        '複雑な問題をエレガントで高性能なWebソリューションに変えます。MERNスタックとNext.jsを専門とし、卓越したユーザー体験を提供するスケーラブルなアプリケーションを構築します。',
-      viewProjects: '作品を見る',
+        'スケーラブルなAI搭載ウェブシステムを構築し、ネパールのビジネス向けのローカライズされたデジタルインフラを探求しています。',
+      viewProjects: 'プロジェクトを見る',
       contactMe: 'コンタクト',
       downloadCV: '履歴書をダウンロード',
       stats: [
-        { value: '50+', label: '完成プロジェクト' },
-        { value: '3+', label: '年の経験' },
-        { value: '100%', label: '顧客満足度' },
+        { value: '5+', label: '構築したSaaS' },
+        { value: '10+', label: 'AIプロジェクト' },
+        { value: '20+', label: '製品実験' },
       ],
-      techStack: 'MERN • Next.js • TypeScript • Tailwind',
-      hamrolinkBadge: '新製品',
-      hamrolinkHeadline: 'HamroLink — ネパールSME向けAIウェブサイトビルダー',
-      hamrolinkSub: '無料で試すか料金を確認',
-      hamrolinkCTA: '無料で試す',
+      techStack: 'Product Strategy • AI Workflows • SaaS Architecture',
+      hamrolinkBadge: 'プロダクトエンジニア',
+      hamrolinkHeadline: 'HamroLink構築中 — ネパールSME向けAIウェブサイトビルダー',
+      hamrolinkSub: '10社以上の企業が利用',
+      hamrolinkCTA: 'プラットフォームを見る',
       hamrolinkPricing: '料金を見る',
-      hamrolinkPriceHint: 'NPR 199/月〜',
+      hamrolinkPriceHint: 'NPR 199/月',
       notAvailable: '現在求職中ではありません',
     },
   };
@@ -73,7 +73,7 @@ export function Hero({ language }: HeroProps) {
   return (
     <section
       id="hero"
-      className="min-h-screen flex flex-col items-center justify-center px-6 pt-10 pb-24 bg-gradient-to-br from-white via-blue-50/40 to-teal-50/40 dark:from-gray-950 dark:via-gray-900/90 dark:to-gray-950 relative overflow-hidden"
+      className="min-h-screen flex flex-col items-center justify-center px-6 pt-20 pb-24 bg-gradient-to-br from-white via-blue-50/40 to-teal-50/40 dark:from-gray-950 dark:via-gray-900/90 dark:to-gray-950 relative overflow-hidden"
     >
       {/* Mesh background */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_50%,rgba(20,184,166,0.12),transparent_60%)] dark:bg-[radial-gradient(ellipse_at_20%_50%,rgba(20,184,166,0.07),transparent_60%)]" />
@@ -85,14 +85,14 @@ export function Hero({ language }: HeroProps) {
 
       {/* ── HamroLink announcement banner ── */}
       <div className="relative z-10 w-full max-w-7xl mx-auto mb-10">
-        <div className="relative group rounded-2xl overflow-hidden border border-orange-200/60 dark:border-orange-800/40 bg-gradient-to-r from-orange-50 via-amber-50 to-rose-50 dark:from-orange-950/40 dark:via-amber-950/40 dark:to-rose-950/40 shadow-lg shadow-orange-100/50 dark:shadow-orange-950/30">
+        <div className="relative group rounded-2xl overflow-hidden border border-blue-200/60 dark:border-blue-800/40 bg-gradient-to-r from-blue-50 via-teal-50 to-blue-50 dark:from-blue-950/40 dark:via-teal-950/40 dark:to-blue-950/40 shadow-lg shadow-blue-100/50 dark:shadow-blue-950/30">
           {/* Animated left accent bar */}
-          <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-orange-400 via-rose-500 to-pink-500 rounded-l-2xl" />
+          <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-400 via-teal-500 to-blue-500 rounded-l-2xl" />
 
           <div className="pl-6 pr-4 py-4 flex flex-col sm:flex-row items-start sm:items-center gap-4">
             {/* Badge + text */}
             <div className="flex items-start sm:items-center gap-3 flex-1 min-w-0 flex-wrap">
-              <span className="flex-shrink-0 inline-flex items-center gap-1 px-2.5 py-1 bg-gradient-to-r from-orange-500 to-rose-500 text-white text-[10px] font-bold tracking-widest uppercase rounded-full shadow-sm">
+              <span className="flex-shrink-0 inline-flex items-center gap-1 px-2.5 py-1 bg-gradient-to-r from-blue-600 to-teal-500 text-white text-[10px] font-bold tracking-widest uppercase rounded-full shadow-sm">
                 <Sparkles className="w-2.5 h-2.5" />
                 {c.hamrolinkBadge}
               </span>
@@ -102,7 +102,7 @@ export function Hero({ language }: HeroProps) {
                 </p>
                 <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
                   {c.hamrolinkSub}
-                  <span className="ml-2 font-semibold text-orange-600 dark:text-orange-400">{c.hamrolinkPriceHint}</span>
+                  <span className="ml-2 font-semibold text-teal-600 dark:text-teal-400">{c.hamrolinkPriceHint}</span>
                 </p>
               </div>
             </div>
@@ -113,7 +113,7 @@ export function Hero({ language }: HeroProps) {
                 href="https://hamrolink.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-4 py-2 bg-gradient-to-r from-orange-500 to-rose-500 hover:from-orange-600 hover:to-rose-600 text-white text-xs font-bold rounded-xl shadow-md shadow-orange-500/30 hover:shadow-orange-500/50 transition-all duration-300 hover:-translate-y-0.5"
+                className="inline-flex items-center gap-1.5 px-4 py-2 bg-gradient-to-r from-blue-600 to-teal-500 hover:from-blue-700 hover:to-teal-600 text-white text-xs font-bold rounded-xl shadow-md shadow-blue-500/30 hover:shadow-blue-500/50 transition-all duration-300 hover:-translate-y-0.5"
               >
                 <Zap className="w-3 h-3" />
                 {c.hamrolinkCTA}
@@ -122,7 +122,7 @@ export function Hero({ language }: HeroProps) {
                 href="https://hamrolink.com/pricing"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-4 py-2 bg-white dark:bg-gray-900 border border-orange-200 dark:border-orange-800 text-orange-700 dark:text-orange-400 text-xs font-bold rounded-xl hover:bg-orange-50 dark:hover:bg-orange-950/50 transition-all duration-300"
+                className="inline-flex items-center gap-1.5 px-4 py-2 bg-white dark:bg-gray-900 border border-blue-200 dark:border-blue-800 text-blue-700 dark:text-blue-400 text-xs font-bold rounded-xl hover:bg-blue-50 dark:hover:bg-blue-950/50 transition-all duration-300"
               >
                 {c.hamrolinkPricing}
                 <ExternalLink className="w-3 h-3" />
@@ -244,27 +244,6 @@ export function Hero({ language }: HeroProps) {
                 </div>
               </div>
 
-              {/* Floating skill badges */}
-              <div className="absolute -top-3 -left-3 bg-white dark:bg-gray-900 rounded-2xl px-4 py-2.5 shadow-xl border border-gray-100 dark:border-gray-800 flex items-center gap-2 animate-[float_3s_ease-in-out_infinite]">
-                <div className="w-7 h-7 bg-cyan-500/15 rounded-lg flex items-center justify-center">
-                  <Code className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
-                </div>
-                <span className="text-xs font-bold text-gray-800 dark:text-gray-200">React.js</span>
-              </div>
-
-              <div className="absolute -bottom-3 -right-3 bg-white dark:bg-gray-900 rounded-2xl px-4 py-2.5 shadow-xl border border-gray-100 dark:border-gray-800 flex items-center gap-2 animate-[float_3s_ease-in-out_0.5s_infinite]">
-                <div className="w-7 h-7 bg-orange-500/15 rounded-lg flex items-center justify-center">
-                  <Star className="w-4 h-4 text-orange-500" fill="currentColor" />
-                </div>
-                <span className="text-xs font-bold text-gray-800 dark:text-gray-200">HamroLink</span>
-              </div>
-
-              <div className="absolute top-1/2 -right-5 -translate-y-1/2 bg-white dark:bg-gray-900 rounded-2xl px-3 py-2.5 shadow-xl border border-gray-100 dark:border-gray-800 animate-[float_4s_ease-in-out_1s_infinite]">
-                <div className="flex items-center gap-1.5">
-                  <div className="w-2 h-2 bg-green-500 rounded-full" />
-                  <span className="text-[11px] font-bold text-gray-800 dark:text-gray-200">TypeScript</span>
-                </div>
-              </div>
             </div>
           </div>
         </div>
