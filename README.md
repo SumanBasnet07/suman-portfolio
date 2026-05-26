@@ -1,36 +1,120 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Suman Basnet
 
-## Getting Started
+Full-Stack Developer • Product Builder • AI & Web Systems Enthusiast
 
-First, run the development server:
+🌐 Portfolio: [suman-basnet.com.np](https://suman-basnet.com.np?utm_source=chatgpt.com)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## About Me
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Hello! I'm Suman Basnet, a developer focused on building practical digital products and modern web applications.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+I enjoy creating systems that solve real-world problems through technology, especially in areas related to:
+- Web Development
+- SaaS Platforms
+- AI Integration
+- Automation Systems
+- UI/UX Design
+- Digital Product Development
 
-## Learn More
+Currently, I am working on **HamroLink**, a multi-tenant website builder platform designed for individuals and small businesses in Nepal. The platform focuses on simplicity, accessibility, and practical online presence management.
 
-To learn more about Next.js, take a look at the following resources:
+I love learning by building real projects and continuously experimenting with new technologies.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# Tech Stack
 
-## Deploy on Vercel
+## Frontend
+- React.js
+- Next.js
+- Tailwind CSS
+- JavaScript / TypeScript
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Backend
+- Node.js
+- Express.js
+- Laravel
+- REST APIs
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Database
+- MongoDB
+- MySQL
+
+## Tools & Platforms
+- Git & GitHub
+- Vercel
+- Cloudflare
+- Linux
+- Figma
+
+## Interests
+- AI-assisted systems
+- SaaS architecture
+- Automation workflows
+- Product strategy
+- Startup ecosystems
+
+---
+
+# Featured Project — HamroLink
+
+## Overview
+
+HamroLink is a website-building platform focused on the Nepalese market.
+
+It allows users to:
+- Create websites using ready-made templates
+- Manage business information
+- Add blogs and portfolio pages
+- Integrate QR-based payment systems
+- Customize AI chatbot features
+- Build an online presence without advanced technical knowledge
+
+The project combines web development, UI/UX thinking, business logic, and AI-driven features into one ecosystem.
+
+---
+
+# What I Focus On
+
+I believe technology should not only work technically but also solve practical user problems.
+
+My development approach focuses on:
+- Clean and scalable systems
+- User-friendly experiences
+- Practical solutions over unnecessary complexity
+- Continuous improvement through real-world testing
+
+---
+
+# Learning Goals
+
+Currently exploring:
+- AI-powered productivity systems
+- Advanced backend architecture
+- Multi-tenant SaaS systems
+- Performance optimization
+- System automation
+- Product-led growth strategies
+
+---
+
+# Contact
+
+🌐 Website: [suman-basnet.com.np](https://suman-basnet.com.np?utm_source=chatgpt.com)
+
+📧 Email: suman@hamrolink.com
+
+💻 GitHub: https://github.com/sumanbasnet07
+
+---
+
+# Philosophy
+
+> “Build systems that make technology simpler and more useful for real people.”
+
+---
+
+Thanks for visiting my portfolio.
+Always open to collaboration, learning opportunities, and interesting projects.
