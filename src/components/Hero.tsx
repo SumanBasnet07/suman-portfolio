@@ -225,7 +225,7 @@ export function Hero({ language }: HeroProps) {
               {/* Image card */}
               <div className="relative rounded-[2rem] overflow-hidden shadow-2xl shadow-teal-500/15 dark:shadow-teal-400/10 border-4 border-white dark:border-gray-800 group transform hover:scale-[1.02] transition-all duration-500">
                 <ImageWithFallback
-                  src="/my-image.png"
+                  src="/about-home.jpg"
                   alt="Suman Basnet - Full Stack Developer"
                   className="w-full aspect-square object-cover group-hover:scale-105 transition-transform duration-700"
                 />

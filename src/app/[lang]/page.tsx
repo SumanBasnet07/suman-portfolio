@@ -1,40 +1,61 @@
-"use client";
+import { Hero } from "@/components/home/Hero";
+import { Intro } from "@/components/home/Intro";
+import { SelectedWork } from "@/components/home/SelectedWork";
+import { WritingPreview } from "@/components/home/WritingPreview";
+import { AboutPreview } from "@/components/home/AboutPreview";
+import { ContactCTA } from "@/components/home/ContactCTA";
+import { Marquee } from "@/components/ui/Marquee";
 
-import { use } from "react";
-import { Header } from "@/components/Header";
-import { Hero } from "@/components/Hero";
-import { SocialProof } from "@/components/SocialProof";
-import { Skills } from "@/components/Skills";
-import { Projects } from "@/components/Projects";
-import { About } from "@/components/About";
-import { Contact } from "@/components/Contact";
-import { Footer } from "@/components/Footer";
-import { Language } from "@/types/language";
-
-interface HomePageProps {
+export default async function HomePage({
+  params,
+}: {
   params: Promise<{ lang: string }>;
-}
+}) {
+  const { lang } = await params;
+  const isJa = lang === "ja";
 
-export default function HomePage({ params }: HomePageProps) {
-  // Use React.use() to unwrap the params promise
-  const resolvedParams = use(params);
-
-  // Validate and ensure language is either 'en' or 'ja', default to 'en'
-  const language: Language =
-    resolvedParams.lang === "en" || resolvedParams.lang === "ja"
-      ? resolvedParams.lang
-      : "en";
+  const systemVocabulary = isJa
+    ? [
+        "プロダクト開発",
+        "システムアーキテクチャ",
+        "AIエージェント (MCP)",
+        "ビジネスステート台帳",
+        "自動化 & ツール実行",
+        "現地決済 & コマース",
+        "マルチテナント基盤",
+      ]
+    : [
+        "PRODUCTS",
+        "SYSTEMS ARCHITECTURE",
+        "AI AGENTS (MCP)",
+        "BUSINESS STATE LEDGER",
+        "AUTOMATION & TOOLS",
+        "LOCAL COMMERCE & PAYMENTS",
+        "MULTI-TENANT INFRASTRUCTURE",
+      ];
 
   return (
-    <div className="min-h-screen bg-white">
-      <Header language={language} />
-      <Hero language={language} />
-      <SocialProof language={language} />
-      <Skills language={language} />
-      <Projects language={language} />
-      <About language={language} />
-      <Contact language={language} />
-      <Footer language={language} />
+    <div className="w-full">
+      {/* 1. Hero Section with Dominant Interactive Ecosystem */}
+      <Hero />
+
+      {/* Moving System Vocabulary Strip with Bilingual Support */}
+      <Marquee items={systemVocabulary} separator="→" speed={30} />
+
+      {/* 2. Editorial Introduction with Architectural Bridge */}
+      <Intro />
+
+      {/* 3. Selected Work: HamroLink Centerpiece + Distrya Editorial Platform */}
+      <SelectedWork />
+
+      {/* 4. Notes from Building: 4 Production Technical Essays */}
+      <WritingPreview />
+
+      {/* 5. About: Visual Progression Timeline & Operational Grounding */}
+      <AboutPreview />
+
+      {/* 6. Contact & Interactive Message Window */}
+      <ContactCTA />
     </div>
   );
 }
