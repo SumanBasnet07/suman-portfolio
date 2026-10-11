@@ -131,7 +131,7 @@ export default async function RootLayout({
       "AI Agents",
       "Next.js",
       "TypeScript",
-      "PostgreSQL",
+      "MongoDB",
       "System Architecture",
     ],
     location: {

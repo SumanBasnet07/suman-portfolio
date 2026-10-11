@@ -46,7 +46,7 @@ export function getItemIcon(name: string) {
   if (upper.includes("MCP") || upper.includes("PROTOCOL") || upper.includes("CONTEXT")) {
     return <Network className="w-3.5 h-3.5 text-emerald-500" />;
   }
-  if (upper.includes("STATE") || upper.includes("LEDGER") || upper.includes("POSTGRES")) {
+  if (upper.includes("STATE") || upper.includes("LEDGER") || upper.includes("MONGODB") || upper.includes("DATABASE") || upper.includes("DB")) {
     return <Database className="w-3.5 h-3.5 text-purple-500" />;
   }
   if (upper.includes("MULTI-TENANT") || upper.includes("ISOLATION") || upper.includes("TIER")) {

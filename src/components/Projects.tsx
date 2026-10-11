@@ -5,7 +5,7 @@ import {
   ArrowUpRight,
   Star,
   Users,
-  Eye,
+  BookOpen,
   Zap,
   Sparkles,
   Globe,
@@ -85,7 +85,7 @@ export function Projects({ language }: ProjectsProps) {
       tech: ['Next.js', 'Tailwind CSS', 'MongoDB', 'NextAuth', 'TypeScript'],
       liveUrl: 'https://distrya.com',
       featured: true,
-      stats: { stars: 210, users: 5400, views: 32000 },
+      stats: { stars: 210, users: 5400, reads: 32000 },
       accent: 'from-violet-500 to-purple-600',
     },
     {
@@ -98,7 +98,7 @@ export function Projects({ language }: ProjectsProps) {
       tech: ['Next.js', 'OpenAI', 'Tailwind CSS', 'TypeScript'],
       liveUrl: 'https://distrya.com/tools/ai-resume-generator',
       featured: true,
-      stats: { stars: 124, users: 3100, views: 18000 },
+      stats: { stars: 124, users: 3100, reads: 18000 },
       accent: 'from-blue-500 to-indigo-500',
     },
     {
@@ -111,7 +111,7 @@ export function Projects({ language }: ProjectsProps) {
       tech: ['HTML', 'CSS', 'Framer Motion', 'JavaScript', 'Vercel'],
       liveUrl: 'https://mirai.info.np',
       featured: true,
-      stats: { stars: 41, users: 1200, views: 6000 },
+      stats: { stars: 41, users: 1200, reads: 6000 },
       accent: 'from-emerald-500 to-teal-600',
     },
     {
@@ -124,7 +124,7 @@ export function Projects({ language }: ProjectsProps) {
       tech: ['MERN', 'Tailwind CSS', 'MDX', 'TypeScript', 'SEO'],
       liveUrl: 'https://bicharbuzz.hamrolink.com/',
       featured: true,
-      stats: { stars: 165, users: 4800, views: 29000 },
+      stats: { stars: 165, users: 4800, reads: 29000 },
       accent: 'from-rose-500 to-pink-600',
     },
   ];
@@ -387,8 +387,8 @@ export function Projects({ language }: ProjectsProps) {
                       <span>{project.stats.users}+</span>
                     </div>
                     <div className="flex items-center gap-1 bg-black/60 backdrop-blur-sm px-2 py-0.5 rounded">
-                      <Eye className="w-2.5 h-2.5" />
-                      <span>{project.stats.views}</span>
+                      <BookOpen className="w-2.5 h-2.5" />
+                      <span>{project.stats.reads}</span>
                     </div>
                   </div>
                 </div>

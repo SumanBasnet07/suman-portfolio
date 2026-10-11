@@ -106,12 +106,12 @@ export const projects: Project[] = [
       "Next.js App Router",
       "TypeScript",
       "Node.js",
-      "PostgreSQL",
+      "MongoDB",
       "Redis",
       "Model Context Protocol (MCP)",
       "Tailwind CSS",
       "Framer Motion",
-      "Prisma ORM",
+      "Mongoose / MongoDB Driver",
       "Khalti / eSewa Payment APIs",
     ],
     systemsExplored: [
@@ -221,8 +221,8 @@ export const projects: Project[] = [
           },
           {
             id: "database",
-            name: "PostgreSQL Multi-Tenant",
-            description: "Row-level tenant isolation ensuring bulletproof data separation and zero cross-talk.",
+            name: "MongoDB Multi-Tenant Store",
+            description: "Tenant-isolated document models and atomic transaction pipelines ensuring zero cross-talk.",
             tag: "STORAGE",
           },
           {
@@ -290,7 +290,7 @@ export const projects: Project[] = [
         heading: "Architected for Isolation, Scale, and Reliability",
         description: [
           "The system is architected across three distinct layers: the Business Presentation & Operational Layer, the AI & Context Orchestration Layer, and the Multi-Tenant Infrastructure Layer.",
-          "Every merchant tenant operates within isolated database schemas using PostgreSQL row-level security (RLS), while sharing high-throughput distributed workers for webhook ingestion and asynchronous order processing.",
+          "Every merchant tenant operates within isolated database collections using MongoDB multi-tenant scoping and atomic ACID transactions, while sharing high-throughput distributed workers for webhook ingestion and asynchronous order processing.",
         ],
       },
       aiAndAgents: {
@@ -330,7 +330,7 @@ export const projects: Project[] = [
         },
         {
           category: "Backend & Services",
-          items: ["Node.js", "TypeScript", "Prisma ORM", "tRPC", "WebSocket Events"],
+          items: ["Node.js", "TypeScript", "Mongoose / MongoDB Driver", "REST & WebSocket Events"],
         },
         {
           category: "AI & Protocol",
@@ -338,7 +338,7 @@ export const projects: Project[] = [
         },
         {
           category: "Database & Infrastructure",
-          items: ["PostgreSQL", "Supabase", "Redis (Upstash)", "Docker", "Vercel Edge Network"],
+          items: ["MongoDB Atlas", "Redis (Upstash)", "Docker", "Vercel Edge Network"],
         },
       ],
       whatNext: {
@@ -385,7 +385,7 @@ export const projects: Project[] = [
       "Node.js",
       "Cloudinary CDN",
       "Cloudflare Edge",
-      "PostgreSQL",
+      "MongoDB",
     ],
     systemsExplored: [
       "AI TOOLS DIRECTORY",
@@ -427,7 +427,7 @@ export const projects: Project[] = [
           },
           {
             title: "Editorial Technology Journalism",
-            desc: "In-depth articles covering hybrid work, robotics infrastructure, agentic workflows, and emerging hardware.",
+            desc: "High-impact technical writing analyzing autonomous systems and operator workflows — including 'Solo Founder AI Workflow 2026' (47,000+ reads) and 'AI Agentic Workflows for SMEs' (25,000+ reads).",
           },
           {
             title: "Cloudinary Dynamic Media Engine",
@@ -435,7 +435,7 @@ export const projects: Project[] = [
           },
           {
             title: "Reader Telemetry & Fast Search",
-            desc: "Real-time view counters, instant multi-category search, and trending story tracking.",
+            desc: "Real-time readership telemetry, instant multi-category search, and trending story tracking.",
           },
         ],
       },
@@ -457,7 +457,7 @@ export const projects: Project[] = [
         },
         {
           category: "Backend & Data",
-          items: ["Node.js API Routes", "PostgreSQL", "Full-text Search Indexing", "Edge Caching"],
+          items: ["Node.js API Routes", "MongoDB", "Full-text Search Indexing", "Edge Caching"],
         },
         {
           category: "Infrastructure",

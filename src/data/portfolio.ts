@@ -149,7 +149,7 @@ export const portfolioData: PortfolioData = {
       {
         id: "data",
         label: { en: "DATA", ja: "データ" },
-        sublabel: { en: "Postgres Ledger", ja: "PostgreSQL & 台帳" },
+        sublabel: { en: "MongoDB Ledger", ja: "MongoDB & 台帳" },
         color: "orange",
         accentHex: "#EA580C",
         x: 22,

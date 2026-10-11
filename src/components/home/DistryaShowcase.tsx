@@ -145,80 +145,164 @@ export function DistryaShowcase() {
             </div>
           </div>
 
-          {/* Featured Editorial Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 relative z-10 mb-8">
-            {/* Primary Featured Story */}
-            <div className="lg:col-span-7 p-6 sm:p-8 rounded-2xl bg-white/[0.05] border border-white/10 hover:border-purple-500/40 transition-all flex flex-col justify-between">
+          {/* Featured Editorial Grid with Real Live Content from distrya.com */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 relative z-10 mb-6">
+            {/* Primary Featured Story: #1 Flagship Publication (47,073 Reads) */}
+            <a
+              href="https://distrya.com/blog/solo-founder-ai-workflow-2026"
+              target="_blank"
+              rel="noreferrer"
+              className="lg:col-span-7 p-6 sm:p-8 rounded-2xl bg-white/[0.05] border border-white/10 hover:border-purple-500/50 hover:bg-white/[0.07] transition-all flex flex-col justify-between group cursor-pointer"
+            >
               <div>
                 <div className="flex items-center justify-between font-mono text-xs text-white/50 mb-4">
                   <span className="text-purple-300 font-semibold flex items-center gap-1.5">
                     <TrendingUp className="w-4 h-4 text-red-400" />
-                    <span>{isJa ? "注目エディトリアル" : "FEATURED EDITORIAL"}</span>
+                    <span>{isJa ? "フラッグシップ論考 (RANK #1)" : "FLAGSHIP ESSAY · RANK #1"}</span>
                   </span>
                   <div className="flex items-center gap-3 text-[11px]">
                     <span className="flex items-center gap-1">
-                      <Calendar className="w-3 h-3 text-white/40" /> 2026
+                      <Calendar className="w-3 h-3 text-white/40" /> 09/2026
                     </span>
-                    <span className="flex items-center gap-1">
-                      <Eye className="w-3 h-3 text-white/40" /> 2,400+ reads
+                    <span className="flex items-center gap-1 text-emerald-400 font-semibold">
+                      <BookOpen className="w-3 h-3" /> 47,073 READS
                     </span>
                   </div>
                 </div>
 
-                <h4 className="text-xl sm:text-2xl font-light text-white tracking-tight leading-snug mb-3">
-                  {isJa
-                    ? "ハイブリッドワーカーの台頭：2026年におけるAIコパイロットと人間の共創"
-                    : "The Rise of the Hybrid Worker: AI Co-Pilots in Modern Workspaces"}
-                </h4>
+                <div className="flex items-start justify-between gap-4 mb-3">
+                  <h4 className="text-xl sm:text-2xl font-light text-white tracking-tight leading-snug group-hover:text-purple-200 transition-colors">
+                    {isJa
+                      ? "一人創業者のためのAI運用設計 2026：個人で事業を自律スケールさせる全手法"
+                      : "Solo Founder AI Workflow 2026: Run a One-Person Business"}
+                  </h4>
+                  <ExternalLink className="w-4 h-4 text-white/30 group-hover:text-purple-300 transition-colors shrink-0 mt-1" />
+                </div>
+
                 <p className="text-xs sm:text-sm text-white/70 font-light leading-relaxed mb-6">
                   {isJa
-                    ? "トップエンジニアや実務家が人間の判断力とAIの実行力を組み合わせ、いかに生産性を10倍に高めているかを解説。"
-                    : "Learn the hybrid worker AI model: how top software professionals combine human judgment with automated AI agent execution for 10x throughput."}
+                    ? "2026年のソロ創業者が実践する実践的AIワークフロー。週7時間の運用ルーティン、実質運用コスト、プロダクト開発・コンテンツ制作・顧客サポートの自律化システムを実例とともに詳説。"
+                    : "The exact AI workflow solo founders use in 2026 — tools, infrastructure costs, a 7-hour weekly routine, and repeatable systems for product development, content syndication, and customer support."}
                 </p>
               </div>
 
               <div className="flex flex-wrap items-center gap-2 pt-4 border-t border-white/10 font-mono text-[10px]">
-                <span className="px-2 py-0.5 rounded bg-white/10 text-white/80">AI CO-PILOT</span>
-                <span className="px-2 py-0.5 rounded bg-white/10 text-white/80">WORKPLACE SYSTEMS</span>
-                <span className="px-2 py-0.5 rounded bg-white/10 text-white/80">HUMAN + AI</span>
+                <span className="px-2 py-0.5 rounded bg-purple-500/20 text-purple-200 font-medium border border-purple-500/30">47.1K READS</span>
+                <span className="px-2 py-0.5 rounded bg-white/10 text-white/80">SOLO FOUNDER</span>
+                <span className="px-2 py-0.5 rounded bg-white/10 text-white/80">AI WORKFLOWS</span>
+                <span className="px-2 py-0.5 rounded bg-white/10 text-white/80">ONE-PERSON UNICORN</span>
+                <span className="px-2 py-0.5 rounded bg-white/10 text-white/80">REVENUE OPS</span>
               </div>
-            </div>
+            </a>
 
-            {/* Secondary Editorial & Utilities Column */}
+            {/* Secondary Editorial Column: #2 (25,206 Reads) & #3 (17,997 Reads) */}
             <div className="lg:col-span-5 space-y-4">
-              <div className="p-5 rounded-xl bg-white/[0.04] border border-white/10 hover:border-purple-500/30 transition-all">
+              {/* #2 Ranked: AI Agentic Workflows for SMEs (25,206 Reads) */}
+              <a
+                href="https://distrya.com/blog/ai-agentic-workflows-for-smes-2026-report"
+                target="_blank"
+                rel="noreferrer"
+                className="p-5 rounded-xl bg-white/[0.04] border border-white/10 hover:border-purple-500/40 hover:bg-white/[0.07] transition-all block group cursor-pointer"
+              >
                 <div className="flex items-center justify-between text-[11px] font-mono text-white/50 mb-2">
-                  <span className="text-red-400 font-semibold">{isJa ? "ニュース" : "NEWS"}</span>
-                  <span>12/2025</span>
+                  <span className="text-purple-300 font-semibold flex items-center gap-1">
+                    <span>{isJa ? "調査レポート (RANK #2)" : "RESEARCH · RANK #2"}</span>
+                  </span>
+                  <div className="flex items-center gap-2.5">
+                    <span className="flex items-center gap-1 text-emerald-400 font-semibold">
+                      <BookOpen className="w-3 h-3" /> 25,206 READS
+                    </span>
+                    <ExternalLink className="w-3 h-3 text-white/30 group-hover:text-purple-300 transition-colors" />
+                  </div>
                 </div>
-                <h5 className="font-medium text-sm text-white leading-snug mb-1">
+                <h5 className="font-medium text-sm text-white leading-snug mb-1 group-hover:text-purple-200 transition-colors">
                   {isJa
-                    ? "米国の産業回帰とロボティクス：製造業の物理的骨格を再構築する技術"
-                    : "America isn't just building robots — it's rebuilding its industrial backbone"}
+                    ? "中堅・中小企業のための自律AIエージェント導入 2026レポート（実データ＋ROI分析）"
+                    : "AI Agentic Workflows for SMEs: 2026 Report (Real Data + ROI)"}
                 </h5>
                 <p className="text-xs text-white/60 font-light line-clamp-2">
                   {isJa
-                    ? "ハードウェアの自動化とエッジロボティクスが現代の製造エコシステムを変革する動向。"
-                    : "Hardware automation and edge robotics shifting the landscape of modern manufacturing."}
+                    ? "中堅中小企業の60%が実務投入。導入企業の実数値、投資対効果（ROI）基準、ツール選定コスト、段階的6ステップ実装フレームワーク。"
+                    : "60% of SMEs are now using agentic AI workflows. Real adoption benchmarks, verified ROI data, implementation costs, and a deterministic 6-step framework."}
                 </p>
-              </div>
+                <div className="flex items-center gap-2 mt-3 font-mono text-[9px] text-white/50">
+                  <span className="px-1.5 py-0.5 rounded bg-emerald-950/70 text-emerald-300 border border-emerald-500/30 font-semibold">25.2K READS</span>
+                  <span>AGENTIC AI</span>
+                  <span>·</span>
+                  <span>SME AUTOMATION</span>
+                  <span>·</span>
+                  <span>ROI</span>
+                </div>
+              </a>
 
-              <div className="p-5 rounded-xl bg-white/[0.04] border border-white/10 hover:border-purple-500/30 transition-all">
+              {/* #3 Ranked: Rogue AI & FTC (17,997 Reads) */}
+              <a
+                href="https://distrya.com"
+                target="_blank"
+                rel="noreferrer"
+                className="p-5 rounded-xl bg-white/[0.04] border border-white/10 hover:border-purple-500/40 hover:bg-white/[0.07] transition-all block group cursor-pointer"
+              >
                 <div className="flex items-center justify-between text-[11px] font-mono text-white/50 mb-2">
-                  <span className="text-purple-300 font-semibold">{isJa ? "AIツール更新" : "AI TOOLS UPDATE"}</span>
-                  <span>01/2026</span>
+                  <span className="text-red-400 font-semibold">{isJa ? "安全規制 (RANK #3)" : "AI SAFETY · RANK #3"}</span>
+                  <div className="flex items-center gap-2.5">
+                    <span className="flex items-center gap-1 text-emerald-400 font-semibold">
+                      <BookOpen className="w-3 h-3" /> 17,997 READS
+                    </span>
+                    <ExternalLink className="w-3 h-3 text-white/30 group-hover:text-purple-300 transition-colors" />
+                  </div>
                 </div>
-                <h5 className="font-medium text-sm text-white leading-snug mb-1">
+                <h5 className="font-medium text-sm text-white leading-snug mb-1 group-hover:text-purple-200 transition-colors">
                   {isJa
-                    ? "実務で真に役立つAIソフトウェア：エンジニアの作業時間を確実に節約するツール群"
-                    : "Vetted AI Software: The Tools That Actually Save Engineering Hours"}
+                    ? "自律AIエージェントの暴走とOpenAIの学習一時停止：米FTCによる調査の真相"
+                    : "AI Agents Went Rogue — OpenAI Paused Training. Now the FTC Is Investigating."}
                 </h5>
                 <p className="text-xs text-white/60 font-light line-clamp-2">
                   {isJa
-                    ? "文書分析、コーディング支援、受信トレイ自動処理に特化した高シグナルツールの厳選録。"
-                    : "Curated directory of high-signal tools for document analysis, coding assistants, and email triage."}
+                    ? "自律エージェントの挙動を受けてOpenAIが学習中断。米FTC初の自律AI調査と開発者が備えるべき実務的含意。"
+                    : "OpenAI pauses training after agent escape. The FTC opens its first rogue AI probe. Architectural breakdown for software builders."}
                 </p>
-              </div>
+                <div className="flex items-center gap-2 mt-3 font-mono text-[9px] text-white/50">
+                  <span className="px-1.5 py-0.5 rounded bg-purple-950/70 text-purple-300 border border-purple-500/30 font-semibold">18.0K READS</span>
+                  <span>OPENAI</span>
+                  <span>·</span>
+                  <span>FTC PROBE</span>
+                  <span>·</span>
+                  <span>AGENT GOVERNANCE</span>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          {/* Real Live Reach Leaderboard Strip */}
+          <div className="mb-8 p-3 rounded-xl bg-white/[0.03] border border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3 font-mono text-[11px] text-white/60">
+            <div className="flex items-center gap-2 text-purple-300 font-semibold">
+              <TrendingUp className="w-3.5 h-3.5 text-red-400" />
+              <span>{isJa ? "DISTRYA フラッグシップ論考:" : "DISTRYA FLAGSHIP ESSAYS:"}</span>
+            </div>
+            <div className="flex flex-wrap items-center gap-3 text-white/50 text-[10px]">
+              <a
+                href="https://distrya.com/blog/solo-founder-ai-workflow-2026"
+                target="_blank"
+                rel="noreferrer"
+                className="hover:text-purple-300 transition-colors font-medium text-purple-200 flex items-center gap-1"
+              >
+                #1 Solo Founder Workflow (47.1K)
+              </a>
+              <span>·</span>
+              <a
+                href="https://distrya.com/blog/ai-agentic-workflows-for-smes-2026-report"
+                target="_blank"
+                rel="noreferrer"
+                className="hover:text-purple-300 transition-colors font-medium text-purple-200 flex items-center gap-1"
+              >
+                #2 SME Agentic Workflows (25.2K)
+              </a>
+              <span>·</span>
+              <span className="text-white/70">#3 Rogue AI Probe (18.0K)</span>
+              <span>·</span>
+              <span>#4 Future of Work (2.4K)</span>
+              <span>·</span>
+              <span>#5 AI Tools Directory (2.3K)</span>
             </div>
           </div>
 

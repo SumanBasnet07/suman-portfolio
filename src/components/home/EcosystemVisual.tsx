@@ -110,15 +110,15 @@ export function EcosystemVisual() {
     {
       id: "data",
       label: { en: "DATA LEDGER", ja: "データ台帳" },
-      role: { en: "POSTGRES & REDIS", ja: "マルチテナントDB" },
+      role: { en: "MONGODB & REDIS", ja: "マルチテナントDB" },
       icon: <Database className="w-5 h-5 text-emerald-600" />,
       accent: "emerald",
       accentHex: "#059669",
       x: 20,
       y: 78,
       details: {
-        en: "Row-level isolated multi-tenant schemas ensuring zero cross-tenant contamination.",
-        ja: "行レベルセキュリティ（RLS）で完全分離されたマルチテナント台帳。",
+        en: "Tenant-isolated MongoDB document stores with atomic ACID updates ensuring zero cross-tenant contamination.",
+        ja: "テナント分離されたMongoDBドキュメントストアとアトミック更新による安全な台帳管理。",
       },
     },
     {
@@ -178,7 +178,7 @@ export function EcosystemVisual() {
           <div className="hidden sm:flex items-center gap-2 font-mono text-[10px] text-[#666666]">
             <span>MCP JSON-RPC</span>
             <span>·</span>
-            <span>RLS POSTGRES</span>
+            <span>MONGODB ATLAS</span>
             <span>·</span>
             <span>EVENT BUS</span>
           </div>

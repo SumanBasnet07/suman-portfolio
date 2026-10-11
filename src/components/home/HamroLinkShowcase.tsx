@@ -60,8 +60,8 @@ export function HamroLinkShowcase() {
     {
       title: isJa ? "03. 在庫台帳の原子更新" : "03. Atomic Inventory Sync",
       desc: isJa
-        ? "PostgreSQL RLSで実店舗・Web間の在庫不整合を即座に防止"
-        : "PostgreSQL transaction decrements stock ledger across all channels",
+        ? "MongoDBのアトミックトランザクションで実店舗・Web間の在庫不整合を即座に防止"
+        : "MongoDB atomic transaction decrements stock ledger across all channels",
       badge: "STATE LEDGER",
       icon: <Database className="w-4 h-4 text-purple-400" />,
     },
@@ -190,7 +190,7 @@ export function HamroLinkShowcase() {
               </p>
               <div className="inline-flex items-center gap-2 font-mono text-[10px] text-emerald-300 bg-emerald-950/60 px-3 py-1 rounded-full border border-emerald-500/30">
                 <Database className="w-3 h-3" />
-                <span>POSTGRES RLS + REDIS</span>
+                <span>MONGODB + REDIS</span>
               </div>
             </div>
 

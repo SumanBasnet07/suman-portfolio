@@ -96,7 +96,7 @@ export const articles: Article[] = [
       {
         sectionHeading: "How It Works: MCP as an Architectural Contract",
         paragraphs: [
-          "In the HamroLink architecture, MCP functions as the constitutional gateway between the reasoning agent and our PostgreSQL multi-tenant database. The model never runs raw queries or manipulates application memory directly. When the agent receives a request—such as a customer asking whether a product can be delivered to their district—it executes a structured three-step cycle:",
+          "In the HamroLink architecture, MCP functions as the constitutional gateway between the reasoning agent and our MongoDB multi-tenant database. The model never runs raw queries or manipulates application memory directly. When the agent receives a request—such as a customer asking whether a product can be delivered to their district—it executes a structured three-step cycle:",
           "First, the agent inspects its tool registry to find tools matching the operational need. Second, it calls the MCP server using a strictly defined JSON Schema payload. Third, our server validates the payload against tenant permissions, queries the live database row, and returns a structured response envelope.",
         ],
         codeSnippet: {
@@ -230,35 +230,44 @@ export const articles: Article[] = [
         ],
         codeSnippet: {
           language: "typescript",
-          caption: "Coordinated State Mutation Flow (Concept)",
-          code: `// Atomic transaction ensuring zero data drift between modules
-await prisma.$transaction(async (tx) => {
-  const payment = await tx.payment.verify({ id: paymentId, signature });
-  const order = await tx.order.update({
-    where: { id: payment.orderId },
-    data: { status: "PAID", confirmedAt: new Date() }
-  });
-  await tx.inventory.decrement({
-    where: { sku: order.itemSku },
-    quantity: order.quantity
-  });
-  await tx.courierManifest.create({
-    data: { orderId: order.id, deliveryAddress: order.address }
-  });
-});`,
+          caption: "Coordinated State Mutation Flow (MongoDB Session)",
+          code: `// Coordinated MongoDB multi-document transaction ensuring zero data drift
+const session = client.startSession();
+await session.withTransaction(async () => {
+  await db.collection("payments").updateOne(
+    { _id: paymentId, signatureValid: true },
+    { $set: { status: "PAID", confirmedAt: new Date() } },
+    { session }
+  );
+  await db.collection("orders").updateOne(
+    { _id: orderId },
+    { $set: { status: "CONFIRMED" } },
+    { session }
+  );
+  await db.collection("inventory").updateOne(
+    { sku: itemSku, quantity: { $gte: orderQty } },
+    { $inc: { quantity: -orderQty } },
+    { session }
+  );
+  await db.collection("courier_manifests").insertOne(
+    { orderId, deliveryAddress, status: "DISPATCH_READY" },
+    { session }
+  );
+});
+await session.endSession();`,
         },
       },
       {
         sectionHeading: "Eliminating Reconciliation Drifts",
         paragraphs: [
-          "Because every subsystem shares this common relational foundation, merchants never have to reconcile spreadsheets against bank statements. The data is consistent by default.",
+          "Because every subsystem shares this common document model and atomic transaction guarantee, merchants never have to reconcile spreadsheets against bank statements. The data is consistent by default.",
         ],
       },
       {
         sectionHeading: "What I Learned: The Cost of Vertical Integration",
         paragraphs: [
           "Building a unified system is significantly more challenging than assembling third-party tools. When you build the storefront, the catalog ledger, the payment gateway integration, and the courier dispatch pipeline under one umbrella, you take full responsibility for reliability and edge cases across the entire chain.",
-          "You must manage database migrations carefully across multi-tenant schemas, handle payment gateway downtime gracefully, and ensure that a spike in storefront browsing traffic never impacts backend inventory writes. We implemented PostgreSQL row-level isolation and Redis caching specifically to ensure that tenant data remains strictly partitioned and resilient.",
+          "You must manage multi-tenant schema models carefully, handle payment gateway downtime gracefully, and ensure that a spike in storefront browsing traffic never impacts backend inventory writes. We implemented MongoDB tenant-scoped document boundaries and Redis caching specifically to ensure that merchant data remains strictly partitioned and resilient.",
           "However, the product outcome justifies the technical effort. Merchants who adopt an integrated system spend their time fulfilling orders and serving customers rather than manually copying addresses between phone apps.",
         ],
       },

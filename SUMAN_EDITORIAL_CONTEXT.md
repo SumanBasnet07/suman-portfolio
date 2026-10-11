@@ -82,7 +82,7 @@ Every article should sound like something Suman could genuinely have written aft
 ---
 
 # 9. TECHNICAL BACKGROUND
-- Stack: Next.js, React, TypeScript, Node.js, PostgreSQL/Prisma, Redis, APIs, auth, multi-tenancy, caching, storage, payment integrations, SEO, automation, AI systems, MCP, tool calling.
+- Stack: Next.js, React, TypeScript, Node.js, MongoDB/Mongoose, Redis, APIs, auth, multi-tenancy, caching, storage, payment integrations, SEO, automation, AI systems, MCP, tool calling.
 - Current repository implementation is the source of truth.
 - NEVER invent: performance numbers, benchmarks, user counts, revenue, customer counts, token savings, latency numbers, uptime, or scaling metrics.
 

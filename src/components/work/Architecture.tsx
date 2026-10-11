@@ -101,7 +101,7 @@ export function Architecture({ compact = false }: ArchitectureProps) {
     },
     "03": {
       title: "03. インフラ & 台帳層",
-      subtitle: "PostgreSQL RLS、Redisキャッシュ、マルチテナント分離機構",
+      subtitle: "MongoDBマルチテナント分離、Redisキャッシュ、アトミック更新機構",
     },
   };
 
@@ -137,7 +137,7 @@ export function Architecture({ compact = false }: ArchitectureProps) {
           <span>MCP PROTOCOL</span>
           <span>·</span>
           <Database className="w-3.5 h-3.5 text-blue-400" />
-          <span>POSTGRES RLS</span>
+          <span>MONGODB</span>
         </div>
       </div>
 
