@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: var(--font-sora), system-ui, -apple-system, sans-serif;
+  --font-sans: var(--font-sora), -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   --font-mono: var(--font-jetbrains-mono), monospace;
-  --color-canvas: #F7F7F4;
-  --color-ink: #111111;
-  --color-muted: #666666;
-  --color-accent-blue: #2563EB;
+  --color-canvas: #F5F5F7;
+  --color-ink: #1D1D1F;
+  --color-muted: #6E6E73;
+  --color-accent-blue: #0071E3;
   --color-accent-violet: #7C3AED;
   --color-accent-emerald: #059669;
   --color-accent-orange: #EA580C;
@@ -14,51 +14,50 @@
 }
 
 :root {
-  --background: #F7F7F4;
-  --foreground: #111111;
+  --background: #FFFFFF;
+  --foreground: #1D1D1F;
 }
 
 html {
   scroll-behavior: smooth;
-  background-color: #F7F7F4;
+  overflow-x: clip;
+  background-color: #FFFFFF;
 }
 
 body {
-  background-color: #F7F7F4;
-  color: #111111;
-  font-family: var(--font-sora), system-ui, -apple-system, sans-serif;
-  overflow-x: hidden;
+  background-color: #FFFFFF;
+  color: #1D1D1F;
+  font-family: var(--font-sora), -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  overflow-x: clip;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
 
-/* Monospace override for metadata tags */
 .font-mono {
   font-family: var(--font-jetbrains-mono), monospace;
 }
 
 ::selection {
-  background-color: #111111;
-  color: #F7F7F4;
+  background-color: #0071E3;
+  color: #FFFFFF;
 }
 
-/* Custom minimal scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #F7F7F4;
+  background: #F5F5F7;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(17, 17, 17, 0.2);
+  background: rgba(29, 29, 31, 0.2);
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(17, 17, 17, 0.4);
+  background: rgba(29, 29, 31, 0.4);
 }
 
 @media (prefers-reduced-motion: reduce) {

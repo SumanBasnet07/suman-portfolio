@@ -141,7 +141,7 @@ I enjoy combining product thinking, engineering, and user-focused design to crea
                 <div className="absolute z-10 -left-4 top-1/2 -translate-y-1/2 transform rotate-5 hover:rotate-0 transition-all duration-500 group">
                   <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white dark:border-gray-800">
                     <ImageWithFallback
-                      src="/suman4.png"
+                      src="/file_00000000f5b482098997d1129b322e7c.png"
                       alt="Suman Basnet - Coding Session"
                       className="w-52 h-52 object-cover group-hover:scale-105 transition-transform duration-700"
                     />

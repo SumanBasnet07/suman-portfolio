@@ -1,8 +1,9 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { projects } from "@/data/projects";
 import { useLanguage } from "@/context/LanguageContext";
 import { Reveal } from "@/components/ui/Reveal";
@@ -27,6 +28,14 @@ export function DistryaShowcase() {
   const project = projects.find((p) => p.id === "distrya")!;
   const { language } = useLanguage();
   const isJa = language === "ja";
+  const stageRef = useRef<HTMLDivElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: stageRef,
+    offset: ["start end", "center center"],
+  });
+  const stageScale = useTransform(scrollYProgress, [0, 1], [0.95, 1]);
+  const stageOpacity = useTransform(scrollYProgress, [0, 0.5], [0.65, 1]);
 
   const tagline = isJa
     ? "AI生産性ツールの探索、厳選された技術ジャーナリズム、実用デジタルユーティリティを提供する現代の制作者・技術者のためのデジタル基盤。"
@@ -78,8 +87,12 @@ export function DistryaShowcase() {
         </p>
       </div>
 
-      {/* Massive Editorial Product Showcase */}
-      <Reveal direction="up" delay={0.2} className="mb-12">
+      {/* Massive Editorial Product Showcase with Scroll-Linked Scale */}
+      <motion.div
+        ref={stageRef}
+        style={{ scale: stageScale, opacity: stageOpacity }}
+        className="mb-12"
+      >
         <div className="w-full rounded-3xl bg-gradient-to-br from-[#180E24] via-[#100918] to-[#0A0510] text-white p-6 sm:p-10 md:p-12 border border-purple-500/20 shadow-2xl relative overflow-hidden">
           {/* Subtle Ambient Glow */}
           <div className="absolute top-0 right-0 w-96 h-96 bg-purple-600/15 rounded-full blur-3xl pointer-events-none" />
@@ -147,12 +160,15 @@ export function DistryaShowcase() {
 
           {/* Featured Editorial Grid with Real Live Content from distrya.com */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 relative z-10 mb-6">
-            {/* Primary Featured Story: #1 Flagship Publication (47,073 Reads) */}
-            <a
+            {/* Primary Featured Story: #1 Flagship Publication (47,073 Views) */}
+            <motion.a
               href="https://distrya.com/blog/solo-founder-ai-workflow-2026"
               target="_blank"
               rel="noreferrer"
-              className="lg:col-span-7 p-6 sm:p-8 rounded-2xl bg-white/[0.05] border border-white/10 hover:border-purple-500/50 hover:bg-white/[0.07] transition-all flex flex-col justify-between group cursor-pointer"
+              whileHover={{ y: -4 }}
+              whileTap={{ scale: 0.99 }}
+              transition={{ duration: 0.2 }}
+              className="lg:col-span-7 p-6 sm:p-8 rounded-2xl bg-white/[0.05] border border-white/10 hover:border-purple-500/50 hover:bg-white/[0.08] transition-colors flex flex-col justify-between group cursor-pointer"
             >
               <div>
                 <div className="flex items-center justify-between font-mono text-xs text-white/50 mb-4">
@@ -165,9 +181,19 @@ export function DistryaShowcase() {
                       <Calendar className="w-3 h-3 text-white/40" /> 09/2026
                     </span>
                     <span className="flex items-center gap-1 text-emerald-400 font-semibold">
-                      <BookOpen className="w-3 h-3" /> 47,073 READS
+                      <Eye className="w-3.5 h-3.5" /> 73,191 VIEWS
                     </span>
                   </div>
+                </div>
+
+                {/* Small Featured Image from distrya.com */}
+                <div className="relative w-full h-36 sm:h-44 rounded-xl overflow-hidden border border-white/10 mb-5 bg-white/5">
+                  <img
+                    src="https://res.cloudinary.com/dr846vni4/image/upload/w_1200,c_limit,q_auto,f_auto,fl_progressive/v1790563600/blog-featured-images/jp9rtsupoemoyby6ge7q.jpg"
+                    alt="Solo Founder AI Workflow 2026"
+                    loading="lazy"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
                 </div>
 
                 <div className="flex items-start justify-between gap-4 mb-3">
@@ -187,89 +213,111 @@ export function DistryaShowcase() {
               </div>
 
               <div className="flex flex-wrap items-center gap-2 pt-4 border-t border-white/10 font-mono text-[10px]">
-                <span className="px-2 py-0.5 rounded bg-purple-500/20 text-purple-200 font-medium border border-purple-500/30">47.1K READS</span>
+                <span className="px-2 py-0.5 rounded bg-purple-500/20 text-purple-200 font-medium border border-purple-500/30">73.2K VIEWS</span>
                 <span className="px-2 py-0.5 rounded bg-white/10 text-white/80">SOLO FOUNDER</span>
                 <span className="px-2 py-0.5 rounded bg-white/10 text-white/80">AI WORKFLOWS</span>
                 <span className="px-2 py-0.5 rounded bg-white/10 text-white/80">ONE-PERSON UNICORN</span>
                 <span className="px-2 py-0.5 rounded bg-white/10 text-white/80">REVENUE OPS</span>
               </div>
-            </a>
+            </motion.a>
 
-            {/* Secondary Editorial Column: #2 (25,206 Reads) & #3 (17,997 Reads) */}
-            <div className="lg:col-span-5 space-y-4">
-              {/* #2 Ranked: AI Agentic Workflows for SMEs (25,206 Reads) */}
-              <a
+            {/* Secondary Editorial Column: #2 (25,206 Views) & #3 (17,997 Views) */}
+            <div className="lg:col-span-5 flex flex-col gap-4">
+              {/* #2 Ranked: AI Agentic Workflows for SMEs (25,206 Views) */}
+              <motion.a
                 href="https://distrya.com/blog/ai-agentic-workflows-for-smes-2026-report"
                 target="_blank"
                 rel="noreferrer"
-                className="p-5 rounded-xl bg-white/[0.04] border border-white/10 hover:border-purple-500/40 hover:bg-white/[0.07] transition-all block group cursor-pointer"
+                whileHover={{ y: -3 }}
+                whileTap={{ scale: 0.99 }}
+                transition={{ duration: 0.2 }}
+                className="flex-1 p-5 sm:p-6 rounded-2xl bg-white/[0.04] border border-white/10 hover:border-purple-500/40 hover:bg-white/[0.08] transition-colors flex flex-col justify-between group cursor-pointer"
               >
-                <div className="flex items-center justify-between text-[11px] font-mono text-white/50 mb-2">
-                  <span className="text-purple-300 font-semibold flex items-center gap-1">
-                    <span>{isJa ? "調査レポート (RANK #2)" : "RESEARCH · RANK #2"}</span>
-                  </span>
-                  <div className="flex items-center gap-2.5">
-                    <span className="flex items-center gap-1 text-emerald-400 font-semibold">
-                      <BookOpen className="w-3 h-3" /> 25,206 READS
+                <div>
+                  <div className="flex items-center justify-between text-[11px] font-mono text-white/50 mb-3">
+                    <span className="text-purple-300 font-semibold flex items-center gap-1">
+                      <span>{isJa ? "調査レポート (RANK #2)" : "RESEARCH · RANK #2"}</span>
                     </span>
-                    <ExternalLink className="w-3 h-3 text-white/30 group-hover:text-purple-300 transition-colors" />
+                    <div className="flex items-center gap-2.5">
+                      <span className="flex items-center gap-1 text-emerald-400 font-semibold">
+                        <Eye className="w-3.5 h-3.5" /> 30,774 VIEWS
+                      </span>
+                      <ExternalLink className="w-3 h-3 text-white/30 group-hover:text-purple-300 transition-colors" />
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3.5">
+                    <div className="w-24 h-16 rounded-lg overflow-hidden border border-white/10 shrink-0 bg-white/5">
+                      <img
+                        src="https://res.cloudinary.com/dr846vni4/image/upload/w_1200,c_limit,q_auto,f_auto,fl_progressive/v1772616138/blog-featured-images/j1magexe08gwprdiac7w.jpg"
+                        alt="AI Agentic Workflows for SMEs"
+                        loading="lazy"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                    </div>
+                    <div className="min-w-0">
+                      <h5 className="font-medium text-sm text-white leading-snug mb-1 group-hover:text-purple-200 transition-colors">
+                        {isJa
+                          ? "中堅・中小企業のための自律AIエージェント導入 2026レポート（実データ＋ROI分析）"
+                          : "AI Agentic Workflows for SMEs: 2026 Report (Real Data + ROI)"}
+                      </h5>
+                      <p className="text-xs text-white/60 font-light line-clamp-2">
+                        {isJa
+                          ? "中堅中小企業の60%が実務投入。導入企業の実数値、投資対効果（ROI）基準、ツール選定コスト、段階的6ステップ実装フレームワーク。"
+                          : "60% of SMEs are now using agentic AI workflows. Real adoption benchmarks, verified ROI data, implementation costs, and a deterministic 6-step framework."}
+                      </p>
+                    </div>
                   </div>
                 </div>
-                <h5 className="font-medium text-sm text-white leading-snug mb-1 group-hover:text-purple-200 transition-colors">
-                  {isJa
-                    ? "中堅・中小企業のための自律AIエージェント導入 2026レポート（実データ＋ROI分析）"
-                    : "AI Agentic Workflows for SMEs: 2026 Report (Real Data + ROI)"}
-                </h5>
-                <p className="text-xs text-white/60 font-light line-clamp-2">
-                  {isJa
-                    ? "中堅中小企業の60%が実務投入。導入企業の実数値、投資対効果（ROI）基準、ツール選定コスト、段階的6ステップ実装フレームワーク。"
-                    : "60% of SMEs are now using agentic AI workflows. Real adoption benchmarks, verified ROI data, implementation costs, and a deterministic 6-step framework."}
-                </p>
-                <div className="flex items-center gap-2 mt-3 font-mono text-[9px] text-white/50">
-                  <span className="px-1.5 py-0.5 rounded bg-emerald-950/70 text-emerald-300 border border-emerald-500/30 font-semibold">25.2K READS</span>
+                <div className="flex items-center gap-2 mt-4 pt-3 border-t border-white/10 font-mono text-[9px] text-white/50">
+                  <span className="px-1.5 py-0.5 rounded bg-emerald-950/70 text-emerald-300 border border-emerald-500/30 font-semibold">30.8K VIEWS</span>
                   <span>AGENTIC AI</span>
                   <span>·</span>
                   <span>SME AUTOMATION</span>
                   <span>·</span>
                   <span>ROI</span>
                 </div>
-              </a>
+              </motion.a>
 
-              {/* #3 Ranked: Rogue AI & FTC (17,997 Reads) */}
-              <a
-                href="https://distrya.com"
+              {/* #3 Ranked: Rogue AI & FTC (25,341 Views) */}
+              <motion.a
+                href="https://distrya.com/blog/ai-agents-rogue-openai-ftc-investigation-2026"
                 target="_blank"
                 rel="noreferrer"
-                className="p-5 rounded-xl bg-white/[0.04] border border-white/10 hover:border-purple-500/40 hover:bg-white/[0.07] transition-all block group cursor-pointer"
+                whileHover={{ y: -3 }}
+                whileTap={{ scale: 0.99 }}
+                transition={{ duration: 0.2 }}
+                className="flex-1 p-5 sm:p-6 rounded-2xl bg-white/[0.04] border border-white/10 hover:border-purple-500/40 hover:bg-white/[0.08] transition-colors flex flex-col justify-between group cursor-pointer"
               >
-                <div className="flex items-center justify-between text-[11px] font-mono text-white/50 mb-2">
-                  <span className="text-red-400 font-semibold">{isJa ? "安全規制 (RANK #3)" : "AI SAFETY · RANK #3"}</span>
-                  <div className="flex items-center gap-2.5">
-                    <span className="flex items-center gap-1 text-emerald-400 font-semibold">
-                      <BookOpen className="w-3 h-3" /> 17,997 READS
-                    </span>
-                    <ExternalLink className="w-3 h-3 text-white/30 group-hover:text-purple-300 transition-colors" />
+                <div>
+                  <div className="flex items-center justify-between text-[11px] font-mono text-white/50 mb-3">
+                    <span className="text-red-400 font-semibold">{isJa ? "安全規制 (RANK #3)" : "AI SAFETY · RANK #3"}</span>
+                    <div className="flex items-center gap-2.5">
+                      <span className="flex items-center gap-1 text-emerald-400 font-semibold">
+                        <Eye className="w-3.5 h-3.5" /> 25,341 VIEWS
+                      </span>
+                      <ExternalLink className="w-3 h-3 text-white/30 group-hover:text-purple-300 transition-colors" />
+                    </div>
                   </div>
+                  <h5 className="font-medium text-base text-white leading-snug mb-2 group-hover:text-purple-200 transition-colors">
+                    {isJa
+                      ? "自律AIエージェントの暴走とOpenAIの学習一時停止：米FTCによる調査の真相"
+                      : "AI Agents Went Rogue — OpenAI Paused Training. Now the FTC Is Investigating."}
+                  </h5>
+                  <p className="text-xs text-white/60 font-light line-clamp-3 leading-relaxed">
+                    {isJa
+                      ? "自律エージェントの挙動を受けてOpenAIが学習中断。米FTC初の自律AI調査と開発者が備えるべき実務的含意。"
+                      : "OpenAI pauses training after agent escape. The FTC opens its first rogue AI probe. Architectural breakdown for software builders."}
+                  </p>
                 </div>
-                <h5 className="font-medium text-sm text-white leading-snug mb-1 group-hover:text-purple-200 transition-colors">
-                  {isJa
-                    ? "自律AIエージェントの暴走とOpenAIの学習一時停止：米FTCによる調査の真相"
-                    : "AI Agents Went Rogue — OpenAI Paused Training. Now the FTC Is Investigating."}
-                </h5>
-                <p className="text-xs text-white/60 font-light line-clamp-2">
-                  {isJa
-                    ? "自律エージェントの挙動を受けてOpenAIが学習中断。米FTC初の自律AI調査と開発者が備えるべき実務的含意。"
-                    : "OpenAI pauses training after agent escape. The FTC opens its first rogue AI probe. Architectural breakdown for software builders."}
-                </p>
-                <div className="flex items-center gap-2 mt-3 font-mono text-[9px] text-white/50">
-                  <span className="px-1.5 py-0.5 rounded bg-purple-950/70 text-purple-300 border border-purple-500/30 font-semibold">18.0K READS</span>
+                <div className="flex items-center gap-2 mt-4 pt-3 border-t border-white/10 font-mono text-[9px] text-white/50">
+                  <span className="px-1.5 py-0.5 rounded bg-purple-950/70 text-purple-300 border border-purple-500/30 font-semibold">25.3K VIEWS</span>
                   <span>OPENAI</span>
                   <span>·</span>
                   <span>FTC PROBE</span>
                   <span>·</span>
                   <span>AGENT GOVERNANCE</span>
                 </div>
-              </a>
+              </motion.a>
             </div>
           </div>
 
@@ -286,7 +334,7 @@ export function DistryaShowcase() {
                 rel="noreferrer"
                 className="hover:text-purple-300 transition-colors font-medium text-purple-200 flex items-center gap-1"
               >
-                #1 Solo Founder Workflow (47.1K)
+                #1 Solo Founder Workflow (73.2K)
               </a>
               <span>·</span>
               <a
@@ -295,14 +343,21 @@ export function DistryaShowcase() {
                 rel="noreferrer"
                 className="hover:text-purple-300 transition-colors font-medium text-purple-200 flex items-center gap-1"
               >
-                #2 SME Agentic Workflows (25.2K)
+                #2 SME Agentic Workflows (30.8K)
               </a>
               <span>·</span>
-              <span className="text-white/70">#3 Rogue AI Probe (18.0K)</span>
+              <a
+                href="https://distrya.com/blog/ai-agents-rogue-openai-ftc-investigation-2026"
+                target="_blank"
+                rel="noreferrer"
+                className="hover:text-purple-300 transition-colors text-white/70"
+              >
+                #3 Rogue AI Probe (25.3K)
+              </a>
               <span>·</span>
-              <span>#4 Future of Work (2.4K)</span>
+              <span>#4 Future of Work (2.9K)</span>
               <span>·</span>
-              <span>#5 AI Tools Directory (2.3K)</span>
+              <span>#5 AI Tools Update (2.8K)</span>
             </div>
           </div>
 
@@ -325,7 +380,7 @@ export function DistryaShowcase() {
             </Link>
           </div>
         </div>
-      </Reveal>
+      </motion.div>
 
       {/* Systems Explored Badges */}
       <div className="p-6 sm:p-8 rounded-2xl bg-white border border-[#111111]/10 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-6">

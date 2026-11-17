@@ -1,13 +1,20 @@
 "use client";
 
 import React, { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import Link from "next/link";
+import {
+  motion,
+  useMotionValue,
+  useScroll,
+  useSpring,
+  useTransform,
+} from "framer-motion";
 import { portfolioData } from "@/data/portfolio";
 import { useLanguage } from "@/context/LanguageContext";
 import { EcosystemVisual } from "@/components/home/EcosystemVisual";
-import { MagneticButton } from "@/components/ui/MagneticButton";
+import { SpatialCanvas } from "@/components/home/SpatialCanvas";
 import { easeEditorial } from "@/lib/animations";
-import { ArrowRight, Terminal } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 export function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -19,134 +26,129 @@ export function Hero() {
   });
 
   const yText = useTransform(scrollYProgress, [0, 1], [0, -40]);
+  const stageScale = useTransform(scrollYProgress, [0, 0.75], [1, 0.95]);
+  const stageY = useTransform(scrollYProgress, [0, 1], [0, 32]);
+
+  // Interactive 3D tilt on pointer move over the hero stage
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [4, -4]), {
+    stiffness: 180,
+    damping: 24,
+  });
+  const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-5, 5]), {
+    stiffness: 180,
+    damping: 24,
+  });
+
+  const handleStageMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    mouseX.set((e.clientX - rect.left) / rect.width - 0.5);
+    mouseY.set((e.clientY - rect.top) / rect.height - 0.5);
+  };
+
+  const handleStageMouseLeave = () => {
+    mouseX.set(0);
+    mouseY.set(0);
+  };
 
   return (
     <section
       ref={containerRef}
-      className="relative pt-28 pb-12 md:pt-36 md:pb-16 flex items-center justify-center overflow-hidden"
+      className="relative bg-[#000000] text-[#F5F5F7] pt-28 pb-16 md:pt-36 md:pb-24 overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-12 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
-          {/* Hero Left: Dominant Editorial Story */}
+      {/* Interactive 3D Spatial Constellation Canvas */}
+      <SpatialCanvas />
+
+      {/* Subtle spatial radial glow */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[900px] h-[520px] rounded-full bg-[#0071E3]/15 blur-[140px]"
+      />
+
+      <div className="max-w-7xl mx-auto px-6 md:px-12 w-full relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+          {/* Hero Left */}
           <motion.div
             style={{ y: yText }}
             className="lg:col-span-5 flex flex-col items-start"
           >
-            {/* Eyebrow badge */}
-            <motion.div
-              initial={{ opacity: 0, y: 14 }}
+            <motion.p
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease: easeEditorial, delay: 0.1 }}
-              className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[#111111]/12 shadow-xs mb-5"
+              transition={{ duration: 0.6, ease: easeEditorial }}
+              className="text-xs sm:text-sm font-medium text-[#86868B] mb-3"
             >
-              <Terminal className="w-3.5 h-3.5 text-[#2563EB]" />
-              <span className="font-mono text-[11px] uppercase tracking-widest text-[#111111] font-medium">
-                {portfolioData.hero.eyebrow[language]}
-              </span>
-            </motion.div>
+              {portfolioData.hero.name} · {portfolioData.hero.title[language]}
+            </motion.p>
 
-            {/* Author Title / Identity */}
-            <motion.div
+            <motion.h1
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: easeEditorial, delay: 0.2 }}
-              className="mb-4"
+              transition={{ duration: 0.75, ease: easeEditorial, delay: 0.08 }}
+              className="text-4xl sm:text-5xl xl:text-[3.75rem] font-semibold tracking-tight text-[#F5F5F7] leading-[1.05] mb-5"
             >
-              <h2 className="font-mono text-xs sm:text-sm tracking-widest uppercase text-[#666666] font-semibold">
-                {portfolioData.hero.name} · {portfolioData.hero.title[language]}
-              </h2>
-            </motion.div>
+              <span>{portfolioData.hero.headline.part1[language]} </span>
+              <span>{portfolioData.hero.headline.part2[language]} </span>
+              <span className="text-[#86868B]">
+                {portfolioData.hero.headline.part3[language]}
+              </span>
+            </motion.h1>
 
-            {/* Hero Heading: Line by Line Editorial Reveal */}
-            <div className="overflow-hidden mb-6">
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-light tracking-tight text-[#111111] leading-[1.12]">
-                <span className="block overflow-hidden">
-                  <motion.span
-                    key={`${language}-part1`}
-                    initial={{ y: "105%" }}
-                    animate={{ y: "0%" }}
-                    transition={{
-                      duration: 0.95,
-                      ease: easeEditorial,
-                      delay: 0.25,
-                    }}
-                    className="block"
-                  >
-                    {portfolioData.hero.headline.part1[language]}
-                  </motion.span>
-                </span>
-                <span className="block overflow-hidden">
-                  <motion.span
-                    key={`${language}-part2`}
-                    initial={{ y: "105%" }}
-                    animate={{ y: "0%" }}
-                    transition={{
-                      duration: 0.95,
-                      ease: easeEditorial,
-                      delay: 0.38,
-                    }}
-                    className="block font-normal"
-                  >
-                    {portfolioData.hero.headline.part2[language]}
-                  </motion.span>
-                </span>
-                <span className="block overflow-hidden">
-                  <motion.span
-                    key={`${language}-part3`}
-                    initial={{ y: "105%" }}
-                    animate={{ y: "0%" }}
-                    transition={{
-                      duration: 0.95,
-                      ease: easeEditorial,
-                      delay: 0.5,
-                    }}
-                    className="block text-[#2563EB] font-normal italic"
-                  >
-                    {portfolioData.hero.headline.part3[language]}
-                  </motion.span>
-                </span>
-              </h1>
-            </div>
-
-            {/* Supporting Text */}
             <motion.p
-              key={`${language}-subhead`}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.85, ease: easeEditorial, delay: 0.62 }}
-              className="text-base sm:text-lg text-[#666666] leading-relaxed max-w-xl mb-8 font-light"
+              transition={{ duration: 0.75, ease: easeEditorial, delay: 0.16 }}
+              className="text-sm sm:text-lg text-[#A1A1A6] leading-relaxed max-w-md mb-8"
             >
               {portfolioData.hero.subheadline[language]}
             </motion.p>
 
-            {/* Action CTAs */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.85, ease: easeEditorial, delay: 0.74 }}
-              className="flex flex-wrap items-center gap-4"
+              transition={{ duration: 0.7, ease: easeEditorial, delay: 0.24 }}
+              className="flex flex-wrap items-center gap-3"
             >
-              <MagneticButton
+              <Link
                 href={`/${language}${portfolioData.hero.primaryCta.href}`}
-                variant="primary"
-                className="gap-2 group shadow-md"
+                className="group inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-[#0071E3] hover:bg-[#0077ED] text-white text-sm font-medium transition-colors"
               >
                 <span>{portfolioData.hero.primaryCta.label[language]}</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </MagneticButton>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+              </Link>
 
-              <MagneticButton
+              <Link
                 href={`/${language}${portfolioData.hero.secondaryCta.href}`}
-                variant="secondary"
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/15 border border-white/15 text-[#F5F5F7] text-sm font-medium transition-colors"
               >
-                <span>{portfolioData.hero.secondaryCta.label[language]}</span>
-              </MagneticButton>
+                {portfolioData.hero.secondaryCta.label[language]}
+              </Link>
             </motion.div>
           </motion.div>
 
-          {/* Hero Right: Dominant Ecosystem Visual */}
-          <div className="lg:col-span-7 flex items-center justify-center">
-            <EcosystemVisual />
+          {/* Hero Right: 3D Pointer-Tilt + Scroll-Linked Spatial Stage */}
+          <div
+            className="lg:col-span-7 w-full"
+            style={{ perspective: 1200 }}
+            onMouseMove={handleStageMouseMove}
+            onMouseLeave={handleStageMouseLeave}
+          >
+            <motion.div
+              style={{
+                scale: stageScale,
+                y: stageY,
+                rotateX,
+                rotateY,
+                transformStyle: "preserve-3d",
+              }}
+              initial={{ opacity: 0, y: 24, scale: 0.96 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 0.9, ease: easeEditorial, delay: 0.18 }}
+              className="rounded-[28px] p-2 sm:p-3 bg-[#161617]/90 backdrop-blur-xl border border-white/15 shadow-[0_32px_80px_rgba(0,113,227,0.2)]"
+            >
+              <EcosystemVisual />
+            </motion.div>
           </div>
         </div>
       </div>

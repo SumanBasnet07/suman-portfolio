@@ -230,8 +230,8 @@ export const portfolioData: PortfolioData = {
         },
         paragraphs: [
           {
-            en: "My engineering journey began with web development and steadily progressed toward full-stack application architecture, relational databases, distributed caching, API design, and AI systems.",
-            ja: "Web制作から始まった開発の旅は、フルスタック設計、リレーショナルDB、分散キャッシュ、API設計、そしてAIエージェント基盤へと深化してきました。",
+            en: "My engineering journey began with web development and steadily progressed toward full-stack application architecture, MongoDB & document databases, distributed caching, API design, and AI systems.",
+            ja: "Web制作から始まった開発の旅は、フルスタック設計、MongoDB（ドキュメントDB）、分散キャッシュ、API設計、そしてAIエージェント基盤へと深化してきました。",
           },
           {
             en: "Building Distrya was an essential chapter in understanding design systems, typographic restraint, and developer-centric workflows from first principles.",

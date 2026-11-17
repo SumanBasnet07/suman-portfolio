@@ -184,7 +184,7 @@ export const projects: Project[] = [
           {
             id: "context",
             name: "Structured Business Context",
-            description: "Real-time state assembly converting relational records into actionable prompt contexts.",
+            description: "Real-time state assembly converting MongoDB document records into actionable prompt contexts.",
             tag: "KNOWLEDGE",
           },
           {
@@ -427,7 +427,7 @@ export const projects: Project[] = [
           },
           {
             title: "Editorial Technology Journalism",
-            desc: "High-impact technical writing analyzing autonomous systems and operator workflows — including 'Solo Founder AI Workflow 2026' (47,000+ reads) and 'AI Agentic Workflows for SMEs' (25,000+ reads).",
+            desc: "High-impact technical writing analyzing autonomous systems and operator workflows — including 'Solo Founder AI Workflow 2026' (73,191 views) and 'AI Agentic Workflows for SMEs' (30,774 views).",
           },
           {
             title: "Cloudinary Dynamic Media Engine",
